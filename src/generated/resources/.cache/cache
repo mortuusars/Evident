@@ -1,2 +1,5 @@
-af7cfe3bff1bffcaa430fd073f36c4a86e51818d data/evident/tags/blocks/burnable.json
+18e52dca73b66213d4266bd75c3bc46dfb244c50 assets/evident/blockstates/cobweb_corner.json
+546d459051106b908ad9fb2304489af2d88f1f01 assets/evident/models/item/cobweb_corner.json
+aa14e585a3a3acd2f9c506616d5e838d42532c9c data/evident/tags/blocks/burnable.json
 499665178399b1f1890c139908171fc70b2bc405 data/evident/tags/items/igniter.json
+bed1df445264b8e6e83f2ae18b56292407803ffe data/forge/tags/blocks/cobweb.json

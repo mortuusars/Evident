@@ -11,4 +11,7 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static final TagKey<Block> BURNABLE = BlockTags.create(new ResourceLocation(Evident.ID, "burnable"));
     public static final TagKey<Item> IGNITER = ItemTags.create(new ResourceLocation(Evident.ID, "igniter"));
+
+
+    public static final TagKey<Block> COBWEB = BlockTags.create(new ResourceLocation("forge", "cobweb"));
 }

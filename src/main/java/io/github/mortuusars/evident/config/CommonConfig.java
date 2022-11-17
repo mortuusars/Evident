@@ -9,6 +9,8 @@ public class CommonConfig {
     public static final ForgeConfigSpec.BooleanValue BURNABLE_CONSUME_ITEM;
     public static final ForgeConfigSpec.BooleanValue BURNABLE_DAMAGE_ITEM;
 
+    public static final ForgeConfigSpec.BooleanValue CHANGE_DEFAULT_COBWEB_SOUND;
+
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
@@ -28,6 +30,12 @@ public class CommonConfig {
                 .define("BurnableDamageDurability", true);
 
         builder.pop();
+
+
+        CHANGE_DEFAULT_COBWEB_SOUND = builder
+                .comment("When set to 'true' - cobweb sound will be changed to something that's not stone ¯\\_(ツ)_/¯")
+                .define("ChangeCobwebSound", true);
+
 
         SPEC = builder.build();
     }

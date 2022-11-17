@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=down,vertical_direction=down": {
+      "model": "evident:block/cobweb_corner",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,vertical_direction=down": {
+      "model": "evident:block/cobweb_corner",
+      "x": 90,
+      "y": 270
+    },
+    "facing=north,vertical_direction=down": {
+      "model": "evident:block/cobweb_corner",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,vertical_direction=down": {
+      "model": "evident:block/cobweb_corner",
+      "x": 90
+    },
+    "facing=west,vertical_direction=down": {
+      "model": "evident:block/cobweb_corner",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,vertical_direction=down": {
+      "model": "evident:block/cobweb_corner",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,vertical_direction=up": {
+      "model": "evident:block/cobweb_corner",
+      "y": 270
+    },
+    "facing=up,vertical_direction=up": {
+      "model": "evident:block/cobweb_corner",
+      "y": 270
+    },
+    "facing=north,vertical_direction=up": {
+      "model": "evident:block/cobweb_corner",
+      "y": 180
+    },
+    "facing=south,vertical_direction=up": {
+      "model": "evident:block/cobweb_corner"
+    },
+    "facing=west,vertical_direction=up": {
+      "model": "evident:block/cobweb_corner",
+      "y": 90
+    },
+    "facing=east,vertical_direction=up": {
+      "model": "evident:block/cobweb_corner",
+      "y": 270
+    }
+  }
+}

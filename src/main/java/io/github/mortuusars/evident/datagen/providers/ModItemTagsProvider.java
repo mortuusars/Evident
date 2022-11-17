@@ -16,9 +16,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
-        tag(ModTags.IGNITER).add(Items.TORCH);
-        tag(ModTags.IGNITER).add(Items.BLAZE_POWDER);
-        tag(ModTags.IGNITER).add(Items.BLAZE_ROD);
-        tag(ModTags.IGNITER).add(Items.FLINT_AND_STEEL);
+        tag(ModTags.IGNITER)
+                .add(Items.TORCH)
+                .add(Items.BLAZE_POWDER)
+                .add(Items.BLAZE_ROD)
+                .add(Items.FLINT_AND_STEEL);
     }
 }

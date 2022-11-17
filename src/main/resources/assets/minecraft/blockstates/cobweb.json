@@ -37,27 +37,27 @@
         "weight": 3
       },
       {
-        "model": "evident:block/cobweb_corner",
+        "model": "evident:block/cobweb_1",
         "weight": 2
       },
       {
-        "model": "evident:block/cobweb_corner",
+        "model": "evident:block/cobweb_1",
         "x": 90,
         "weight": 2
       },
       {
-        "model": "evident:block/cobweb_corner",
+        "model": "evident:block/cobweb_1",
         "x": 180,
         "weight": 2
       },
       {
-        "model": "evident:block/cobweb_corner",
+        "model": "evident:block/cobweb_1",
         "x": 90,
         "y": 90,
         "weight": 2
       },
       {
-        "model": "evident:block/cobweb_corner",
+        "model": "evident:block/cobweb_1",
         "x": 180,
         "y": 180,
         "weight": 2
