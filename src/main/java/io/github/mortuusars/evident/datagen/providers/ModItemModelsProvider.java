@@ -16,5 +16,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
     protected void registerModels() {
         singleTexture(ModBlocks.COBWEB_CORNER.get().getRegistryName().getPath(),
                 mcLoc("item/generated"), "layer0", modLoc("block/cobweb_corner"));
+
+        withExistingParent(ModBlocks.CHOPPING_BLOCK.get().getRegistryName().getPath(), modLoc("block/chopping_block"));
     }
 }

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import io.github.mortuusars.evident.behaviour.Burnable;
 import io.github.mortuusars.evident.config.CommonConfig;
 import io.github.mortuusars.evident.setup.ClientSetup;
+import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
 import io.github.mortuusars.evident.setup.ModBlocks;
 import io.github.mortuusars.evident.setup.ModItems;
 import net.minecraft.resources.ResourceLocation;
@@ -40,11 +41,12 @@ public class Evident
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBlocks.register(bus);
         ModItems.register(bus);
-//        bus.addListener(Evident::blockRegistryOverrides);
+        ModBlockEntityTypes.register(bus);
 
         bus.addListener(this::commonSetup);
 
         bus.addListener(ClientSetup::onClientSetupEvent);
+        bus.addListener(ClientSetup::onRegisterRenderers);
 
         MinecraftForge.EVENT_BUS.addListener(Burnable::onBlockActivated);
         MinecraftForge.EVENT_BUS.register(this);

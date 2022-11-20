@@ -15,6 +15,9 @@ public class ModItems {
     public static final RegistryObject<BlockItem> COBWEB_CORNER = ITEMS.register("cobweb_corner",
             () -> new BlockItem(ModBlocks.COBWEB_CORNER.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
 
+    public static final RegistryObject<BlockItem> CHOPPING_BLOCK = ITEMS.register("chopping_block",
+            () -> new BlockItem(ModBlocks.CHOPPING_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+
     public static void register(IEventBus bus){
         ITEMS.register(bus);
     }

@@ -1,6 +1,7 @@
 package io.github.mortuusars.evident.setup;
 
 import io.github.mortuusars.evident.Evident;
+import io.github.mortuusars.evident.blocks.ChoppingBlockBlock;
 import io.github.mortuusars.evident.blocks.CobwebCornerBlock;
 import io.github.mortuusars.evident.config.CommonConfig;
 import net.minecraft.world.level.block.Block;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.lwjgl.system.CallbackI;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
@@ -27,19 +29,12 @@ public class ModBlocks {
                     .strength(0.25F)
                     .requiresCorrectToolForDrops()));
 
+    public static final RegistryObject<ChoppingBlockBlock> CHOPPING_BLOCK = BLOCKS.register("chopping_block",
+            () -> new ChoppingBlockBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                    .sound(SoundType.WOOD)
+                    .strength(2F)));
+
     public static void register(IEventBus bus){
         BLOCKS.register(bus);
-    }
-
-    @SubscribeEvent
-    public static void blockRegistryOverrides(RegistryEvent.Register<Block> event) {
-//        if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get()) {
-//            event.getRegistry().register(new WebBlock(BlockBehaviour.Properties.of(Material.WEB)
-//                    .sound(SoundType.AZALEA_LEAVES)
-//                    .noCollission()
-//                    .requiresCorrectToolForDrops()
-//                    .strength(4.0F))
-//                    .setRegistryName("minecraft:cobweb"));
-//        }
     }
 }

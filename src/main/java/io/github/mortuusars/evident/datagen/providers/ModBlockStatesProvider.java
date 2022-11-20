@@ -27,5 +27,7 @@ public class ModBlockStatesProvider extends BlockStateProvider {
                             .rotationY((int)state.getValue(CobwebCornerBlock.FACING).toYRot())
                             .rotationX(state.getValue(CobwebCornerBlock.VERTICAL_DIRECTION) == Direction.DOWN ? 90 : 0)
                             .build());
+
+        horizontalBlock(ModBlocks.CHOPPING_BLOCK.get(), models().getExistingFile(modLoc("block/chopping_block")));
     }
 }

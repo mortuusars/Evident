@@ -21,5 +21,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.BLAZE_POWDER)
                 .add(Items.BLAZE_ROD)
                 .add(Items.FLINT_AND_STEEL);
+
+        tag(ModTags.CHOPPING_BLOCK_WEDGEABLE)
+                .add(Items.WOODEN_AXE)
+                .add(Items.IRON_AXE)
+                .add(Items.GOLDEN_AXE)
+                .add(Items.DIAMOND_AXE)
+                .add(Items.NETHERITE_AXE);
     }
 }
