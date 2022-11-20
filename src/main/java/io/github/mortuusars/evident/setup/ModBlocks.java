@@ -33,13 +33,13 @@ public class ModBlocks {
 
     @SubscribeEvent
     public static void blockRegistryOverrides(RegistryEvent.Register<Block> event) {
-        if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get()) {
-            event.getRegistry().register(new WebBlock(BlockBehaviour.Properties.of(Material.WEB)
-                    .sound(SoundType.AZALEA_LEAVES)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()
-                    .strength(4.0F))
-                    .setRegistryName("minecraft:cobweb"));
-        }
+//        if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get()) {
+//            event.getRegistry().register(new WebBlock(BlockBehaviour.Properties.of(Material.WEB)
+//                    .sound(SoundType.AZALEA_LEAVES)
+//                    .noCollission()
+//                    .requiresCorrectToolForDrops()
+//                    .strength(4.0F))
+//                    .setRegistryName("minecraft:cobweb"));
+//        }
     }
 }

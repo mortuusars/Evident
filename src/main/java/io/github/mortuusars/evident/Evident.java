@@ -8,6 +8,7 @@ import io.github.mortuusars.evident.setup.ModBlocks;
 import io.github.mortuusars.evident.setup.ModItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WebBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,6 +22,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -40,16 +42,19 @@ public class Evident
         ModItems.register(bus);
 //        bus.addListener(Evident::blockRegistryOverrides);
 
-        bus.addListener(ClientSetup::onClientSetupEvent);
+        bus.addListener(this::commonSetup);
 
+        bus.addListener(ClientSetup::onClientSetupEvent);
 
         MinecraftForge.EVENT_BUS.addListener(Burnable::onBlockActivated);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-
-
     public static ResourceLocation resource(String path) {
         return new ResourceLocation(ID, path);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> Blocks.COBWEB.soundType = SoundType.AZALEA_LEAVES);
     }
 }

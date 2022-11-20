@@ -48,7 +48,7 @@ public class Burnable {
             }
 
             // Sound
-            level.playSound(event.getPlayer(), blockPos, SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS, 1F, random.nextFloat() * 0.6F + 0.7F);
+            level.playSound(event.getPlayer(), blockPos, SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS, 1F, random.nextFloat() * 0.6F + 1.2F);
             if (itemStack.is(Items.FLINT_AND_STEEL)) {
                 level.playSound(player, blockPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, random.nextFloat() * 0.4F + 0.8F);
             }
@@ -100,8 +100,7 @@ public class Burnable {
             double z = blockPos.getZ() + shapeBounds.minZ + random.nextDouble() * sizeZ;
             level.addParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0d, 0.05d, 0d);
             level.addParticle(ParticleTypes.ASH, x, y, z, 0d, 0.02d, 0d);
+            level.addParticle(ParticleTypes.SMOKE, x, y, z, 0d, 0.05d, 0d);
         }
-
-        level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, blockPos.getX() + 0.5, blockPos.getY() + 0.4, blockPos.getZ() + 0.5, 0d, 0.05d, 0d);
     }
 }
