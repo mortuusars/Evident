@@ -2,7 +2,7 @@ package io.github.mortuusars.evident.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import io.github.mortuusars.evident.blocks.entity.ChoppingBlockBlockEntity;
+import io.github.mortuusars.evident.block.entity.ChoppingBlockBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
@@ -10,9 +10,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.ItemStack;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ChoppingBlockRenderer implements BlockEntityRenderer<ChoppingBlockBlockEntity> {
 

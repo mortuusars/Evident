@@ -1,16 +1,13 @@
 package io.github.mortuusars.evident.datagen.providers;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.blocks.CobwebCornerBlock;
+import io.github.mortuusars.evident.block.CobwebCornerBlock;
 import io.github.mortuusars.evident.setup.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
-
-import java.util.Objects;
 
 public class ModBlockStatesProvider extends BlockStateProvider {
 

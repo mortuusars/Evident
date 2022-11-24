@@ -5,6 +5,7 @@ import io.github.mortuusars.evident.setup.ModTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -28,5 +29,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.GOLDEN_AXE)
                 .add(Items.DIAMOND_AXE)
                 .add(Items.NETHERITE_AXE);
+
+        tag(ItemTags.ARROWS)
+                .add(Items.TORCH);
     }
 }

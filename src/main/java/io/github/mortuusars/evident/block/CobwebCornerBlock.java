@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.blocks;
+package io.github.mortuusars.evident.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

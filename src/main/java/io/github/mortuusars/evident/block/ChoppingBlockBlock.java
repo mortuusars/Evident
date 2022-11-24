@@ -1,10 +1,9 @@
-package io.github.mortuusars.evident.blocks;
+package io.github.mortuusars.evident.block;
 
-import io.github.mortuusars.evident.blocks.entity.ChoppingBlockBlockEntity;
+import io.github.mortuusars.evident.block.entity.ChoppingBlockBlockEntity;
 import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;

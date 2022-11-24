@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.blocks.entity;
+package io.github.mortuusars.evident.block.entity;
 
 import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
 import io.github.mortuusars.evident.setup.ModTags;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;

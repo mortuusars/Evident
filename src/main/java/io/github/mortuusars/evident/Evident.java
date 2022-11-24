@@ -1,13 +1,18 @@
 package io.github.mortuusars.evident;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
 import io.github.mortuusars.evident.behaviour.Burnable;
+import io.github.mortuusars.evident.behaviour.TorchShooting;
 import io.github.mortuusars.evident.config.CommonConfig;
-import io.github.mortuusars.evident.setup.ClientSetup;
-import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
-import io.github.mortuusars.evident.setup.ModBlocks;
-import io.github.mortuusars.evident.setup.ModItems;
+import io.github.mortuusars.evident.entity.TorchArrow;
+import io.github.mortuusars.evident.setup.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -17,8 +22,12 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.living.LivingGetProjectileEvent;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -31,6 +40,7 @@ import org.slf4j.Logger;
 public class Evident
 {
     public static final String ID = "evident";
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -39,6 +49,7 @@ public class Evident
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModEntities.register(bus);
         ModBlocks.register(bus);
         ModItems.register(bus);
         ModBlockEntityTypes.register(bus);
@@ -49,6 +60,7 @@ public class Evident
         bus.addListener(ClientSetup::onRegisterRenderers);
 
         MinecraftForge.EVENT_BUS.addListener(Burnable::onBlockActivated);
+        MinecraftForge.EVENT_BUS.register(TorchShooting.class);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -57,6 +69,9 @@ public class Evident
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> Blocks.COBWEB.soundType = SoundType.AZALEA_LEAVES);
+        event.enqueueWork(() -> {
+            if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get())
+                Blocks.COBWEB.soundType = SoundType.AZALEA_LEAVES;
+        });
     }
 }
