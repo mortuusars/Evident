@@ -7,12 +7,16 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.ForgeRegistries;
 
+@SuppressWarnings("ConstantConditions")
 public class ModTags {
-    public static final TagKey<Block> BURNABLE = BlockTags.create(new ResourceLocation(Evident.ID, "burnable"));
-    public static final TagKey<Item> IGNITER = ItemTags.create(new ResourceLocation(Evident.ID, "igniter"));
+    public static final TagKey<Block> BURNABLE = BlockTags.create(new ResourceLocation(Evident.ID, "burnables"));
+    public static final TagKey<Item> IGNITER = ItemTags.create(new ResourceLocation(Evident.ID, "igniters"));
 
-    public static final TagKey<Block> COBWEB = BlockTags.create(new ResourceLocation("forge", "cobweb"));
+    public static final TagKey<Item> TORCH = ForgeRegistries.ITEMS.tags().createTagKey(new ResourceLocation("forge:torches"));
 
-    public static final TagKey<Item> CHOPPING_BLOCK_WEDGEABLE = ItemTags.create(Evident.resource("chopping_block/wedgeable"));
+    public static final TagKey<Block> COBWEB = ForgeRegistries.BLOCKS.tags().createTagKey(new ResourceLocation("forge", "cobwebs"));
+
+    public static final TagKey<Item> CHOPPING_BLOCK_WEDGEABLE = ItemTags.create(Evident.resource("chopping_block/wedgeables"));
 }

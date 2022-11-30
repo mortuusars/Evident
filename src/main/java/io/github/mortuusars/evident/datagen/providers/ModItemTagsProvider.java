@@ -29,8 +29,5 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.GOLDEN_AXE)
                 .add(Items.DIAMOND_AXE)
                 .add(Items.NETHERITE_AXE);
-
-        tag(ItemTags.ARROWS)
-                .add(Items.TORCH);
     }
 }

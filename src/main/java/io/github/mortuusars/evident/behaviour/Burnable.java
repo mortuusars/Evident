@@ -8,7 +8,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -23,7 +25,7 @@ public class Burnable {
 
     public static void onBlockActivated(PlayerInteractEvent.RightClickBlock event) {
 
-        if (!CommonConfig.BURNABLE_ENABLED.get()) // Disabled
+        if (!CommonConfig.BURNABLE_ENABLED.get())
             return;
 
         Player player = event.getPlayer();
@@ -36,6 +38,8 @@ public class Burnable {
         Level level = event.getPlayer().level;
         BlockPos blockPos = event.getPos();
         BlockState clickedBlockState = level.getBlockState(blockPos);
+
+
 
 
         if (clickedBlockState.is(ModTags.BURNABLE)){
@@ -64,6 +68,7 @@ public class Burnable {
             player.getCooldowns().addCooldown(itemStack.getItem(), 10);
 
             player.swing(event.getHand());
+            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
 
             // Cancel further actions (eg: torch would be placed at pos if we didn't cancel)
             event.setCanceled(true);
@@ -77,10 +82,13 @@ public class Burnable {
             return;
 
         if (level instanceof ServerLevel serverLevel) {
+            // Block
             level.removeBlock(blockPos, false);
 
+            // Sound
             level.playSound(null, blockPos, SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS, 1F, level.getRandom().nextFloat() * 0.6F + 1.2F);
 
+            // Particles
             Random random = level.getRandom();
             AABB shapeBounds = blockStateAtPos.getShape(level, blockPos).bounds();
 
@@ -106,23 +114,8 @@ public class Burnable {
                 serverLevel.sendParticles(((ServerPlayer)player), ParticleTypes.SMALL_FLAME, false, x, y, z, 1, 0d, 0.05d, 0d, 0D);
                 serverLevel.sendParticles(((ServerPlayer)player), ParticleTypes.ASH, false, x, y, z, 1, 0d, 0.02d, 0d, 0D);
                 serverLevel.sendParticles(((ServerPlayer)player), ParticleTypes.SMOKE, false, x, y, z, 1, 0d, 0.05d, 0d, 0D);
-//                level.addParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0d, 0.05d, 0d);
-//                level.addParticle(ParticleTypes.ASH, x, y, z, 0d, 0.02d, 0d);
-//                level.addParticle(ParticleTypes.SMOKE, x, y, z, 0d, 0.05d, 0d);
             }
         }
-
-//        // Burn
-//        if (level.isClientSide) {
-//            spawnParticles(level, blockPos, blockStateAtPos);
-//        }
-//        else {
-//            level.removeBlock(blockPos, false);
-////            ((ServerLevel)level).sendParticles()
-//        }
-
-        // Sound
-
     }
 
     private static void spawnParticles(Level level, BlockPos blockPos, BlockState clickedBlockState) {
