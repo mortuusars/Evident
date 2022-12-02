@@ -15,6 +15,8 @@ public class ModTags {
     public static final TagKey<Item> IGNITER = ItemTags.create(new ResourceLocation(Evident.ID, "igniters"));
 
     public static final TagKey<Item> TORCH = ForgeRegistries.ITEMS.tags().createTagKey(new ResourceLocation("forge:torches"));
+    public static final TagKey<Item> SOUL_TORCH = ForgeRegistries.ITEMS.tags().createTagKey(new ResourceLocation("forge:soul_torches"));
+    public static final TagKey<Item> REDSTONE_TORCH = ForgeRegistries.ITEMS.tags().createTagKey(new ResourceLocation("forge:redstone_torches"));
 
     public static final TagKey<Block> COBWEB = ForgeRegistries.BLOCKS.tags().createTagKey(new ResourceLocation("forge", "cobwebs"));
 

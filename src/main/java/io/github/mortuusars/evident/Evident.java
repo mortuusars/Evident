@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
 import io.github.mortuusars.evident.behaviour.Burnable;
-import io.github.mortuusars.evident.behaviour.TorchShooting;
+import io.github.mortuusars.evident.behaviour.torch_shooting.TorchShooting;
 import io.github.mortuusars.evident.config.CommonConfig;
 import io.github.mortuusars.evident.setup.*;
 import net.minecraft.resources.ResourceLocation;
@@ -58,8 +58,11 @@ public class Evident
             if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get())
                 Blocks.COBWEB.soundType = SoundType.AZALEA_LEAVES;
 
-            if (CommonConfig.SHOOTING_TORCHES_DISPENSER.get())
+            if (CommonConfig.SHOOTING_TORCHES_DISPENSER.get()) {
                 DispenserBlock.registerBehavior(Items.TORCH, TorchShooting.DISPENSER_BEHAVIOR);
+                DispenserBlock.registerBehavior(Items.SOUL_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
+                DispenserBlock.registerBehavior(Items.REDSTONE_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
+            }
         });
     }
 }

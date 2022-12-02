@@ -1,6 +1,7 @@
 package io.github.mortuusars.evident.entity;
 
 import com.mojang.logging.LogUtils;
+import io.github.mortuusars.evident.behaviour.torch_shooting.TorchType;
 import io.github.mortuusars.evident.config.CommonConfig;
 import io.github.mortuusars.evident.setup.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -34,12 +35,16 @@ import org.jetbrains.annotations.NotNull;
 import javax.naming.OperationNotSupportedException;
 
 public class TorchArrow extends AbstractArrow {
-    public boolean torchWasPlaced = false;
-
-    private BlockItem torchItem = (BlockItem) Items.TORCH;
+    protected TorchType torchType = TorchType.TORCH;
+    protected BlockItem torchItem = (BlockItem) Items.TORCH;
+    protected boolean torchWasPlaced = false;
 
     public TorchArrow(EntityType<? extends TorchArrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+    }
+
+    public TorchArrow(EntityType<? extends TorchArrow> entityType, Level level, LivingEntity shooter) {
+        super(entityType, shooter, level);
     }
 
     public TorchArrow(Level level, LivingEntity shooter) {
@@ -50,9 +55,8 @@ public class TorchArrow extends AbstractArrow {
         super(ModEntities.TORCH_ARROW.get(), pX, pY, pZ, pLevel);
     }
 
-    public TorchArrow(Level level, LivingEntity shooter, StandingAndWallBlockItem torchItem) {
-        super(ModEntities.TORCH_ARROW.get(), shooter, level);
-        setTorchItem(torchItem);
+    public TorchArrow(EntityType<? extends TorchArrow> redstoneTorchArrowEntityType, double pX, double pY, double pZ, Level pLevel) {
+        super(redstoneTorchArrowEntityType, pX, pY, pZ, pLevel);
     }
 
     public void setTorchItem(BlockItem item) {
@@ -61,6 +65,14 @@ public class TorchArrow extends AbstractArrow {
 
     public BlockItem getTorchItem() {
         return torchItem;
+    }
+
+    public void setTorchType(TorchType type) {
+        this.torchType = type;
+    }
+
+    public TorchType getTorchType() {
+        return torchType;
     }
 
     @Override
@@ -75,7 +87,7 @@ public class TorchArrow extends AbstractArrow {
 
     @Override
     protected @NotNull ItemStack getPickupItem() {
-        return new ItemStack(torchItem);
+        return new ItemStack(getTorchItem());
     }
 
     @Override
@@ -156,7 +168,7 @@ public class TorchArrow extends AbstractArrow {
             }
 
         if (level.isClientSide)
-            spawnOnBlockHitParticles(level, blockHitResult);
+            this.spawnOnBlockHitParticles(level, blockHitResult);
     }
 
     @Override
@@ -164,14 +176,7 @@ public class TorchArrow extends AbstractArrow {
         super.onHitEntity(entityHitResult);
 
         if (level instanceof ServerLevel serverLevel) {
-            Entity entity = entityHitResult.getEntity();
-            for (int i = 0; i < 8; i++) {
-                double x = random.nextDouble() * 0.2;
-                double y = random.nextDouble() * 0.2;
-                double z = random.nextDouble() * 0.2;
-
-                serverLevel.sendParticles(ParticleTypes.LAVA, entity.getX(), position().y, entity.getZ(), 1, x, y, z, 0);
-            }
+            spawnServerOnEntityHitParticles(serverLevel, entityHitResult);
         }
     }
 
@@ -258,6 +263,20 @@ public class TorchArrow extends AbstractArrow {
                 level.addAlwaysVisibleParticle(ParticleTypes.SMALL_FLAME, true, pos.x, pos.y, pos.z, xo * -1, yo * -1, zo * -1);
             else
                 level.addAlwaysVisibleParticle(ParticleTypes.LAVA, true, pos.x, pos.y, pos.z, xo * -1, yo * -1, zo * -1);
+        }
+    }
+
+    /**
+     * Only called server-side. #onEntityHit is not working reliably on client-side.
+     */
+    protected void spawnServerOnEntityHitParticles(ServerLevel level, EntityHitResult entityHitResult) {
+        Entity entity = entityHitResult.getEntity();
+        for (int i = 0; i < 8; i++) {
+            double x = random.nextDouble() * 0.2;
+            double y = random.nextDouble() * 0.2;
+            double z = random.nextDouble() * 0.2;
+
+            level.sendParticles(ParticleTypes.LAVA, entity.getX(), position().y, entity.getZ(), 1, x, y, z, 0);
         }
     }
 }
