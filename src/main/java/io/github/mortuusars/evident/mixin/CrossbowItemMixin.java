@@ -24,7 +24,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
 
     @Inject(method = "getArrow", at = @At("HEAD"), cancellable = true)
     private static void getArrow(Level level, LivingEntity livingEntity, ItemStack crossbowStack, ItemStack ammoStack, CallbackInfoReturnable<AbstractArrow> cir) {
-        if (ammoStack.is(ModTags.TORCH)) {
+        if (TorchType.isTorch(ammoStack)) {
             AbstractArrow arrow = TorchShooting.createArrowFromItem(ammoStack, level, livingEntity);
             if (livingEntity instanceof Player) {
                 arrow.setCritArrow(true);
@@ -46,7 +46,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
 
         if (!isInCreative && enchantedWithMultishot) {
             ItemStack ammoStack = shooter.getProjectile(crossbowStack);
-            if (TorchType.getFromStack(ammoStack) != TorchType.NONE) {
+            if (TorchType.isTorch(ammoStack)) {
                 for (int i = 0; i < 3; i++) {
                     if (loadProjectile(shooter, crossbowStack, ammoStack, false, false)) {
                         cir.setReturnValue(false);

@@ -8,6 +8,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,7 +44,11 @@ public class SoulTorchArrow extends TorchArrow {
 
     @Override
     protected void doPostHurtEffects(@NotNull LivingEntity targetEntity) {
-        targetEntity.setSecondsOnFire(CommonConfig.SHOOTING_TORCHES_IGNITE_SECONDS.get());
+        int seconds = CommonConfig.SHOOTING_TORCHES_WITHER_SECONDS.get();
+        if (seconds > 0) {
+            MobEffectInstance mobeffectinstance = new MobEffectInstance(MobEffects.WITHER, seconds * 20, 0);
+            targetEntity.addEffect(mobeffectinstance, this.getEffectSource());
+        }
     }
 
     protected BlockState getDefaultTorchBlockStateForFacing(Direction facing) throws OperationNotSupportedException {

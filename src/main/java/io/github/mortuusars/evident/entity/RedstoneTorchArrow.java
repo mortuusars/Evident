@@ -9,6 +9,8 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,7 +44,11 @@ public class RedstoneTorchArrow extends TorchArrow {
 
     @Override
     protected void doPostHurtEffects(@NotNull LivingEntity targetEntity) {
-
+        int seconds = CommonConfig.SHOOTING_TORCHES_SLOWNESS_SECONDS.get();
+        if (seconds > 0) {
+            MobEffectInstance mobeffectinstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, seconds * 20, 0);
+            targetEntity.addEffect(mobeffectinstance, this.getEffectSource());
+        }
     }
 
     protected BlockState getDefaultTorchBlockStateForFacing(Direction facing) throws OperationNotSupportedException {

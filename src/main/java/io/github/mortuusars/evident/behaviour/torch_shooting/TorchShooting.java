@@ -24,6 +24,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingGetProjectileEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -45,6 +46,7 @@ public class TorchShooting {
             else
                 arrow = new TorchArrow(level, position.x(), position.y(), position.z());
 
+            arrow.setBaseDamage(CommonConfig.SHOOTING_TORCHES_DAMAGE.get());
             arrow.pickup = AbstractArrow.Pickup.ALLOWED;
             if (stack.getItem() instanceof BlockItem item)
                 arrow.setTorchItem(item);
@@ -52,8 +54,16 @@ public class TorchShooting {
         }
     };
 
+    public static void registerDispenserBehaviours() {
+        if (CommonConfig.SHOOTING_TORCHES_DISPENSER.get()) {
+            DispenserBlock.registerBehavior(Items.TORCH, TorchShooting.DISPENSER_BEHAVIOR);
+            DispenserBlock.registerBehavior(Items.SOUL_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
+            DispenserBlock.registerBehavior(Items.REDSTONE_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
+        }
+    }
+
     public static boolean isTorchProjectile(ItemStack stack) {
-        return TorchType.getFromStack(stack) != TorchType.NONE;
+        return TorchType.isTorch(stack);
     }
 
     public static ItemStack getFirstSupportedProjectileFromInventory(Player player) {
@@ -70,28 +80,23 @@ public class TorchShooting {
     }
 
     public static AbstractArrow createArrowFromItem(ItemStack itemStack, Level level, LivingEntity shooter) {
-        if (itemStack.is(ModTags.TORCH)) {
-            TorchArrow torchArrow = new TorchArrow(level, shooter);
-            if (itemStack.getItem() instanceof BlockItem blockItem) {
-                torchArrow.setTorchItem(blockItem);
-            }
-            return torchArrow;
-        }
-        else if (itemStack.is(ModTags.SOUL_TORCH)) {
-            TorchArrow torchArrow = new SoulTorchArrow(level, shooter);
-            if (itemStack.getItem() instanceof BlockItem blockItem) {
-                torchArrow.setTorchItem(blockItem);
-            }
-            return torchArrow;
-        }
-        else if (itemStack.is(ModTags.REDSTONE_TORCH)) {
-            TorchArrow torchArrow = new RedstoneTorchArrow(level, shooter);
-            if (itemStack.getItem() instanceof BlockItem blockItem) {
-                torchArrow.setTorchItem(blockItem);
-            }
-            return torchArrow;
-        }
-        else return new Arrow(level, shooter);
+        if (!isTorchProjectile(itemStack))
+            return new Arrow(level, shooter);
+
+        TorchArrow torchArrow;
+
+        if (itemStack.is(ModTags.SOUL_TORCH))
+            torchArrow = new SoulTorchArrow(level, shooter);
+        else if (itemStack.is(ModTags.REDSTONE_TORCH))
+            torchArrow = new RedstoneTorchArrow(level, shooter);
+        else
+            torchArrow = new TorchArrow(level, shooter);
+
+        torchArrow.setBaseDamage(CommonConfig.SHOOTING_TORCHES_DAMAGE.get());
+        if (itemStack.getItem() instanceof BlockItem blockItem)
+            torchArrow.setTorchItem(blockItem);
+
+        return torchArrow;
     }
 
     @SubscribeEvent

@@ -58,11 +58,7 @@ public class Evident
             if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get())
                 Blocks.COBWEB.soundType = SoundType.AZALEA_LEAVES;
 
-            if (CommonConfig.SHOOTING_TORCHES_DISPENSER.get()) {
-                DispenserBlock.registerBehavior(Items.TORCH, TorchShooting.DISPENSER_BEHAVIOR);
-                DispenserBlock.registerBehavior(Items.SOUL_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
-                DispenserBlock.registerBehavior(Items.REDSTONE_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
-            }
+            TorchShooting.registerDispenserBehaviours();
         });
     }
 }

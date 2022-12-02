@@ -51,7 +51,7 @@
                 "pulling": 1,
                 "torch": 0.1
             },
-            "model": "evident:item/bow_torch_pulling_0"
+            "model": "evident:item/bow/torch/pulling_0"
         },
         {
             "predicate": {
@@ -59,7 +59,7 @@
                 "torch": 0.1,
                 "pull": 0.65
             },
-            "model": "evident:item/bow_torch_pulling_1"
+            "model": "evident:item/bow/torch/pulling_1"
         },
         {
             "predicate": {
@@ -68,7 +68,7 @@
                 "torch_pulled_animation": 0,
                 "pull": 0.9
             },
-            "model": "evident:item/bow_torch_pulling_2"
+            "model": "evident:item/bow/torch/pulling_2"
         },
         {
             "predicate": {
@@ -77,7 +77,7 @@
                 "torch_pulled_animation": 0.2,
                 "pull": 0.9
             },
-            "model": "evident:item/bow_torch_pulling_2_0"
+            "model": "evident:item/bow/torch/pulling_2_0"
         },
         {
             "predicate": {
@@ -86,7 +86,7 @@
                 "torch_pulled_animation": 0.4,
                 "pull": 0.9
             },
-            "model": "evident:item/bow_torch_pulling_2_1"
+            "model": "evident:item/bow/torch/pulling_2_1"
         },
         {
             "predicate": {
@@ -95,7 +95,7 @@
                 "torch_pulled_animation": 0.6,
                 "pull": 0.9
             },
-            "model": "evident:item/bow_torch_pulling_2_2"
+            "model": "evident:item/bow/torch/pulling_2_2"
         },
         {
             "predicate": {
@@ -104,7 +104,93 @@
                 "torch_pulled_animation": 0.8,
                 "pull": 0.9
             },
-            "model": "evident:item/bow_torch_pulling_2_3"
+            "model": "evident:item/bow/torch/pulling_2_3"
+        },
+
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2
+            },
+            "model": "evident:item/bow/soul_torch/pulling_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2,
+                "pull": 0.65
+            },
+            "model": "evident:item/bow/soul_torch/pulling_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2,
+                "torch_pulled_animation": 0,
+                "pull": 0.9
+            },
+            "model": "evident:item/bow/soul_torch/pulling_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2,
+                "torch_pulled_animation": 0.2,
+                "pull": 0.9
+            },
+            "model": "evident:item/bow/soul_torch/pulling_2_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2,
+                "torch_pulled_animation": 0.4,
+                "pull": 0.9
+            },
+            "model": "evident:item/bow/soul_torch/pulling_2_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2,
+                "torch_pulled_animation": 0.6,
+                "pull": 0.9
+            },
+            "model": "evident:item/bow/soul_torch/pulling_2_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.2,
+                "torch_pulled_animation": 0.8,
+                "pull": 0.9
+            },
+            "model": "evident:item/bow/soul_torch/pulling_2_3"
+        },
+
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.3
+            },
+            "model": "evident:item/bow/redstone_torch/pulling_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.3,
+                "pull": 0.65
+            },
+            "model": "evident:item/bow/redstone_torch/pulling_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "torch": 0.3,
+                "torch_pulled_animation": 0,
+                "pull": 0.9
+            },
+            "model": "evident:item/bow/redstone_torch/pulling_2"
         }
     ]
 }

@@ -1,6 +1,0 @@
-{
-    "parent": "item/bow",
-    "textures": {
-        "layer0": "evident:item/bow_torch_pulling_2_0"
-    }
-}

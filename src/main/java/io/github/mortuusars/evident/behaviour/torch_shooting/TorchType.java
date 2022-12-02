@@ -22,6 +22,10 @@ public enum TorchType {
         return value;
     }
 
+    public static boolean isTorch(ItemStack itemStack) {
+        return getFromStack(itemStack) != NONE;
+    }
+
     public static TorchType getFromStack(ItemStack stack) {
         if (stack.is(ModTags.TORCH))
             return TORCH;

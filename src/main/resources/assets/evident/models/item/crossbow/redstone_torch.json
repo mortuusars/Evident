@@ -1,0 +1,6 @@
+{
+    "parent": "item/crossbow",
+    "textures": {
+        "layer0": "evident:item/crossbow/redstone_torch"
+    }
+}

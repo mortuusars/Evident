@@ -25,11 +25,7 @@ public class ClientSetup {
 
     private static void registerItemProperties(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ItemProperties.register(Items.BOW, new ResourceLocation("torch"), TorchShootingItemOverrides::getTorchOverrideValue);
-            ItemProperties.register(Items.BOW, new ResourceLocation("torch_pulled_animation"), TorchShootingItemOverrides::getTorchPulledValue);
-
-            ItemProperties.register(Items.CROSSBOW, new ResourceLocation("torch"), TorchShootingItemOverrides::getTorchOverrideValue);
-            ItemProperties.register(Items.CROSSBOW, new ResourceLocation("torch_pulled_animation"), TorchShootingItemOverrides::getTorchPulledValue);
+            TorchShootingItemOverrides.registerItemProperties();
         });
     }
 
