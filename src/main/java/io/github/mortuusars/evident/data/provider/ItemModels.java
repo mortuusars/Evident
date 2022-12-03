@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.datagen.providers;
+package io.github.mortuusars.evident.data.provider;
 
 
 import io.github.mortuusars.evident.Evident;
@@ -7,8 +7,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class ModItemModelsProvider extends ItemModelProvider {
-    public ModItemModelsProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
+public class ItemModels extends ItemModelProvider {
+    public ItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, Evident.ID, existingFileHelper);
     }
 

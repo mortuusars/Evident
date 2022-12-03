@@ -1,0 +1,22 @@
+{
+  "type": "evident:chopping",
+  "ingredients": [
+    {
+      "item": "minecraft:oak_wood"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/axes"
+  },
+  "result": [
+    {
+      "item": "minecraft:oak_planks",
+      "count": 4
+    },
+    {
+      "item": "minecraft:oak_planks",
+      "count": 2,
+      "chance": 0.4
+    }
+  ]
+}

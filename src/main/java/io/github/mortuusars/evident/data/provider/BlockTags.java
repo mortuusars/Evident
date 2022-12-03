@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.datagen.providers;
+package io.github.mortuusars.evident.data.provider;
 
 import io.github.mortuusars.evident.Evident;
 import io.github.mortuusars.evident.setup.ModBlocks;
@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
-public class ModBlockTagsProvider extends BlockTagsProvider {
-    public ModBlockTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
+public class BlockTags extends BlockTagsProvider {
+    public BlockTags(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
         super(generator, Evident.ID, existingFileHelper);
     }
 

@@ -4,6 +4,9 @@ import io.github.mortuusars.evident.block.entity.ChoppingBlockBlockEntity;
 import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -28,6 +31,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -79,9 +83,18 @@ public class ChoppingBlockBlock extends BaseEntityBlock implements SimpleWaterlo
             return InteractionResult.SUCCESS;
         }
         else {
+            ItemStack ingredientStack = choppingBlockEntity.getStoredItem().copy();
             if (choppingBlockEntity.processStoredItem(player.getItemInHand(hand), player)) {
-                level.playSound(player, pos, SoundEvents.TRIDENT_HIT, SoundSource.BLOCKS, 0.9F, 0.6F);
-                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.9F, 0.9F);
+
+                for (int i = 0; i < 12; ++i) {
+                    Vec3 vec3d = new Vec3(((double) level.random.nextFloat() - 0.5D) * 0.3D, Math.random() * 0.1D + 0.05D, ((double) level.random.nextFloat() - 0.5D) * 0.3D);
+                    if (level instanceof ServerLevel) {
+                        ((ServerLevel) level).sendParticles(new ItemParticleOption(ParticleTypes.ITEM, ingredientStack), pos.getX() + 0.5F, pos.getY() + 0.8F, pos.getZ() + 0.5F, 1, vec3d.x, vec3d.y + 0.05D, vec3d.z, 0.0D);
+                    } else {
+                        level.addParticle(new ItemParticleOption(ParticleTypes.ITEM, ingredientStack), pos.getX() + 0.5F, pos.getY() + 0.8F, pos.getZ() + 0.5F, vec3d.x, vec3d.y + 0.05D, vec3d.z);
+                    }
+                }
+
                 return InteractionResult.SUCCESS;
             }
         }

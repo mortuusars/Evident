@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.datagen.providers;
+package io.github.mortuusars.evident.data.provider;
 
 import io.github.mortuusars.evident.Evident;
 import io.github.mortuusars.evident.block.CobwebCornerBlock;
@@ -9,9 +9,9 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class ModBlockStatesProvider extends BlockStateProvider {
+public class BlockStates extends BlockStateProvider {
 
-    public ModBlockStatesProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
+    public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen, Evident.ID, exFileHelper);
     }
 

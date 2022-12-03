@@ -1,10 +1,7 @@
-package io.github.mortuusars.evident.datagen;
+package io.github.mortuusars.evident.data;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.datagen.providers.ModBlockStatesProvider;
-import io.github.mortuusars.evident.datagen.providers.ModBlockTagsProvider;
-import io.github.mortuusars.evident.datagen.providers.ModItemModelsProvider;
-import io.github.mortuusars.evident.datagen.providers.ModItemTagsProvider;
+import io.github.mortuusars.evident.data.provider.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,16 +14,16 @@ public class DataGenerators {
         DataGenerator generator = event.getGenerator();
 
         if (event.includeServer()){
-            ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(generator, event.getExistingFileHelper());
+            BlockTags blockTagsProvider = new BlockTags(generator, event.getExistingFileHelper());
             generator.addProvider(blockTagsProvider);
-            generator.addProvider(new ModItemTagsProvider(generator, blockTagsProvider, event.getExistingFileHelper()));
+            generator.addProvider(new ItemTags(generator, blockTagsProvider, event.getExistingFileHelper()));
+            generator.addProvider(new Recipes(generator));
 //            generator.addProvider(new ModLootTablesProvider(generator));
-//            generator.addProvider(new ModRecipeProvider(generator));
         }
 
         if (event.includeClient()){
-            generator.addProvider(new ModBlockStatesProvider(generator, event.getExistingFileHelper()));
-            generator.addProvider(new ModItemModelsProvider(generator, event.getExistingFileHelper()));
+            generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));
+            generator.addProvider(new ItemModels(generator, event.getExistingFileHelper()));
 //            generator.addProvider(new ModLanguageProvider(generator, "en_us"));
 //            generator.addProvider(new ModLanguageProvider(generator, "uk_ua"));
         }

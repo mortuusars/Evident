@@ -33,16 +33,19 @@ public class Evident
     {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModEntities.register(bus);
-        ModBlocks.register(bus);
-        ModItems.register(bus);
-        ModBlockEntityTypes.register(bus);
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModEntities.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlockEntityTypes.register(modEventBus);
 
-        bus.addListener(this::commonSetup);
+        ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
 
-        bus.addListener(ClientSetup::onClientSetupEvent);
-        bus.addListener(ClientSetup::onRegisterRenderers);
+        modEventBus.addListener(this::commonSetup);
+
+        modEventBus.addListener(ClientSetup::onClientSetupEvent);
+        modEventBus.addListener(ClientSetup::onRegisterRenderers);
 
         MinecraftForge.EVENT_BUS.addListener(Burnable::onBlockActivated);
         MinecraftForge.EVENT_BUS.register(TorchShooting.class);
