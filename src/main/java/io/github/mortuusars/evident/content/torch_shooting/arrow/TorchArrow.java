@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -86,6 +87,11 @@ public class TorchArrow extends AbstractArrow {
     @Override
     protected @NotNull ItemStack getPickupItem() {
         return new ItemStack(getTorchItem());
+    }
+
+    @Override
+    protected boolean tryPickup(Player pPlayer) {
+        return true;
     }
 
     @Override

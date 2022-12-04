@@ -3,7 +3,6 @@ package io.github.mortuusars.evident;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
-import io.github.mortuusars.evident.content.Burnable;
 import io.github.mortuusars.evident.content.torch_shooting.TorchShooting;
 import io.github.mortuusars.evident.config.Configuration;
 import io.github.mortuusars.evident.events.ClientEvents;

@@ -43,6 +43,9 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
         boolean isInCreative = shooter instanceof Player && ((Player)shooter).getAbilities().instabuild;
         boolean enchantedWithMultishot = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, crossbowStack) > 0;
 
+        // Mixin to consume more than one torch when loading 2-3 torch arrows.
+        // Crossbow consumes only 1 arrow when loading 3 with multishot,
+
         if (!isInCreative && enchantedWithMultishot) {
             ItemStack ammoStack = shooter.getProjectile(crossbowStack);
             if (TorchType.isTorch(ammoStack)) {
@@ -59,7 +62,7 @@ public abstract class CrossbowItemMixin extends ProjectileWeaponItem {
         }
     }
 
-    @Shadow
+    @Shadow // Placeholder. Appropriate method in CrossbowItem will be called.
     private static boolean loadProjectile(LivingEntity pShooter, ItemStack pCrossbowStack, ItemStack pAmmoStack, boolean pHasAmmo, boolean pIsCreative) {
         return false;
     }
