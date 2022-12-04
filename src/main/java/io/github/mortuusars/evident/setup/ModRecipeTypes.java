@@ -1,7 +1,7 @@
 package io.github.mortuusars.evident.setup;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.recipe.ChoppingBlockRecipe;
+import io.github.mortuusars.evident.content.chopping_block.ChoppingBlockRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;

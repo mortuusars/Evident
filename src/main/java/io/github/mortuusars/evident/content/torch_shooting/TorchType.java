@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.behaviour.torch_shooting;
+package io.github.mortuusars.evident.content.torch_shooting;
 
 import io.github.mortuusars.evident.setup.ModTags;
 import net.minecraft.world.item.ItemStack;

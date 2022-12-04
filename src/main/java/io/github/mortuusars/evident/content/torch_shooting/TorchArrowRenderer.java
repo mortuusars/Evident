@@ -1,7 +1,6 @@
-package io.github.mortuusars.evident.client.renderer.entity;
+package io.github.mortuusars.evident.content.torch_shooting;
 
-import io.github.mortuusars.evident.behaviour.torch_shooting.TorchType;
-import io.github.mortuusars.evident.entity.TorchArrow;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.TorchArrow;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

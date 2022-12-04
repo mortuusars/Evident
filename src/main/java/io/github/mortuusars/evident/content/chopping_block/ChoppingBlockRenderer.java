@@ -1,8 +1,8 @@
-package io.github.mortuusars.evident.client.renderer;
+package io.github.mortuusars.evident.content.chopping_block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import io.github.mortuusars.evident.block.entity.ChoppingBlockBlockEntity;
+import io.github.mortuusars.evident.content.chopping_block.ChoppingBlockBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;

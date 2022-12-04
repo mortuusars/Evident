@@ -1,7 +1,5 @@
-package io.github.mortuusars.evident.block.entity;
+package io.github.mortuusars.evident.content.chopping_block;
 
-import io.github.mortuusars.evident.block.ChoppingBlockBlock;
-import io.github.mortuusars.evident.recipe.ChoppingBlockRecipe;
 import io.github.mortuusars.evident.setup.ForgeTags;
 import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
 import io.github.mortuusars.evident.setup.ModRecipeTypes;
@@ -13,20 +11,13 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,7 +32,6 @@ import net.minecraftforge.registries.tags.ITag;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.IllegalFormatWidthException;
 import java.util.List;
 import java.util.Optional;
 

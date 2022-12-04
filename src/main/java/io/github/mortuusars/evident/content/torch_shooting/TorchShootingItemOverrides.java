@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.behaviour.torch_shooting;
+package io.github.mortuusars.evident.content.torch_shooting;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -12,19 +12,26 @@ public class TorchShootingItemOverrides {
 
     /**
      * Called on ClientSetupEvent with enqueueWork.
+     * These properties could then be used to select different models for torches.
      */
     public static void registerItemProperties() {
-        ItemProperties.register(Items.BOW, new ResourceLocation("torch"), TorchShootingItemOverrides::getTorchOverrideValue);
+        ItemProperties.register(Items.BOW, new ResourceLocation("torch"), TorchShootingItemOverrides::getBowTorchOverrideValue);
         ItemProperties.register(Items.BOW, new ResourceLocation("torch_pulled_animation"), TorchShootingItemOverrides::getTorchPulledValue);
 
         ItemProperties.register(Items.CROSSBOW, new ResourceLocation("torch"), TorchShootingItemOverrides::getCrossbowTorchOverrideValue);
         ItemProperties.register(Items.CROSSBOW, new ResourceLocation("torch_animation"), TorchShootingItemOverrides::getTorchPulledValue);
     }
 
-    public static float getTorchOverrideValue(ItemStack stack, ClientLevel level, LivingEntity livingEntity, int seed) {
+    /**
+     * Ammo type. Torch - 0.1, Soul Torch - 0.2, Redstone Torch - 0.3. All other ammo - 0.0.
+     */
+    public static float getBowTorchOverrideValue(ItemStack stack, ClientLevel level, LivingEntity livingEntity, int seed) {
         return livingEntity != null ? TorchType.getFromStack(livingEntity.getProjectile(stack)).getFloatValue() : 0F;
     }
 
+    /**
+     * Same as for bow, but from a crossbow stack 'ChargedProjectiles' tag.
+     */
     public static float getCrossbowTorchOverrideValue(ItemStack stack, ClientLevel level, LivingEntity livingEntity, int seed) {
         for (ItemStack projectileStack : CrossbowItem.getChargedProjectiles(stack)) {
             return TorchType.getFromStack(projectileStack).getFloatValue();
@@ -32,6 +39,9 @@ public class TorchShootingItemOverrides {
         return 0F;
     }
 
+    /**
+     * Value for a looping animation. 0.05 per tick.
+     */
     public static float getTorchPulledValue(ItemStack stack, ClientLevel level, LivingEntity livingEntity, int seed) {
         return level != null ? level.getGameTime() % 20 / 20F : 0F;
     }

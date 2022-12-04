@@ -1,8 +1,8 @@
 package io.github.mortuusars.evident.setup;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.block.ChoppingBlockBlock;
-import io.github.mortuusars.evident.block.CobwebCornerBlock;
+import io.github.mortuusars.evident.content.chopping_block.ChoppingBlockBlock;
+import io.github.mortuusars.evident.content.cobweb.CobwebCornerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;

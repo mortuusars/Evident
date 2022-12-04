@@ -2,8 +2,8 @@ package io.github.mortuusars.evident.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class CommonConfig {
-    public static final ForgeConfigSpec SPEC;
+public class Configuration {
+    public static final ForgeConfigSpec COMMON;
 
     public static final ForgeConfigSpec.BooleanValue BURNABLE_ENABLED;
     public static final ForgeConfigSpec.BooleanValue BURNABLE_CONSUME_ITEM;
@@ -75,6 +75,6 @@ public class CommonConfig {
                 .define("ChangeCobwebSound", true);
 
 
-        SPEC = builder.build();
+        COMMON = builder.build();
     }
 }

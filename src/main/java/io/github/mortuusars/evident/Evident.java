@@ -3,14 +3,14 @@ package io.github.mortuusars.evident;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
-import io.github.mortuusars.evident.behaviour.Burnable;
-import io.github.mortuusars.evident.behaviour.torch_shooting.TorchShooting;
-import io.github.mortuusars.evident.config.CommonConfig;
+import io.github.mortuusars.evident.content.Burnable;
+import io.github.mortuusars.evident.content.torch_shooting.TorchShooting;
+import io.github.mortuusars.evident.config.Configuration;
+import io.github.mortuusars.evident.events.ClientEvents;
+import io.github.mortuusars.evident.events.CommonEvents;
 import io.github.mortuusars.evident.setup.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -31,9 +31,10 @@ public class Evident
 
     public Evident()
     {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configuration.COMMON);
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         ModEntities.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
@@ -43,13 +44,11 @@ public class Evident
         ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.register(ClientEvents.class);
 
-        modEventBus.addListener(ClientSetup::onClientSetupEvent);
-        modEventBus.addListener(ClientSetup::onRegisterRenderers);
-
-        MinecraftForge.EVENT_BUS.addListener(Burnable::onBlockActivated);
         MinecraftForge.EVENT_BUS.register(TorchShooting.class);
-        MinecraftForge.EVENT_BUS.register(this);
+
+        MinecraftForge.EVENT_BUS.register(CommonEvents.class);
     }
 
     public static ResourceLocation resource(String path) {
@@ -58,7 +57,7 @@ public class Evident
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            if (CommonConfig.CHANGE_DEFAULT_COBWEB_SOUND.get())
+            if (Configuration.CHANGE_DEFAULT_COBWEB_SOUND.get())
                 Blocks.COBWEB.soundType = SoundType.AZALEA_LEAVES;
 
             TorchShooting.registerDispenserBehaviours();

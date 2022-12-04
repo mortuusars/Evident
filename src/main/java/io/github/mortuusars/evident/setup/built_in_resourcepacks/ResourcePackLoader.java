@@ -13,11 +13,9 @@ import net.minecraftforge.forgespi.language.IModFileInfo;
 import net.minecraftforge.forgespi.locating.IModFile;
 
 // Credits: Creators-of-Create/Create
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ResourcePackLoader {
 
     // Loads resourcepacks located in resources/resourcepacks
-    @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             IModFileInfo modFileInfo = ModList.get().getModFileById(Evident.ID);

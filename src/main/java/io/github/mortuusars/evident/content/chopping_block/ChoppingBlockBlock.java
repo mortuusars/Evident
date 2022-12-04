@@ -1,14 +1,11 @@
-package io.github.mortuusars.evident.block;
+package io.github.mortuusars.evident.content.chopping_block;
 
-import io.github.mortuusars.evident.block.entity.ChoppingBlockBlockEntity;
 import io.github.mortuusars.evident.setup.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

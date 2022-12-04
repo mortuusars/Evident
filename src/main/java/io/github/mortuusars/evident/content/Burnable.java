@@ -1,6 +1,6 @@
-package io.github.mortuusars.evident.behaviour;
+package io.github.mortuusars.evident.content;
 
-import io.github.mortuusars.evident.config.CommonConfig;
+import io.github.mortuusars.evident.config.Configuration;
 import io.github.mortuusars.evident.setup.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,7 +10,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -25,7 +24,7 @@ public class Burnable {
 
     public static void onBlockActivated(PlayerInteractEvent.RightClickBlock event) {
 
-        if (!CommonConfig.BURNABLE_ENABLED.get())
+        if (!Configuration.BURNABLE_ENABLED.get())
             return;
 
         Player player = event.getPlayer();
@@ -53,13 +52,13 @@ public class Burnable {
 
             // Damage/Consume item
             if (!player.isCreative()) {
-                if (itemStack.isDamageableItem() && CommonConfig.BURNABLE_DAMAGE_ITEM.get()) {
+                if (itemStack.isDamageableItem() && Configuration.BURNABLE_DAMAGE_ITEM.get()) {
                     itemStack.hurtAndBreak(1, player, (p) -> {
                         p.broadcastBreakEvent(event.getHand());
                     });
                 }
 
-                if (!itemStack.isDamageableItem() && CommonConfig.BURNABLE_CONSUME_ITEM.get()) {
+                if (!itemStack.isDamageableItem() && Configuration.BURNABLE_CONSUME_ITEM.get()) {
                     itemStack.shrink(1);
                 }
             }

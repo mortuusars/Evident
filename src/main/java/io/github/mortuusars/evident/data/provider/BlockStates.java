@@ -1,7 +1,7 @@
 package io.github.mortuusars.evident.data.provider;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.block.CobwebCornerBlock;
+import io.github.mortuusars.evident.content.cobweb.CobwebCornerBlock;
 import io.github.mortuusars.evident.setup.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;

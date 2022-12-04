@@ -1,11 +1,9 @@
-package io.github.mortuusars.evident.behaviour.torch_shooting;
+package io.github.mortuusars.evident.content.torch_shooting;
 
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
-import io.github.mortuusars.evident.config.CommonConfig;
-import io.github.mortuusars.evident.entity.RedstoneTorchArrow;
-import io.github.mortuusars.evident.entity.SoulTorchArrow;
-import io.github.mortuusars.evident.entity.TorchArrow;
+import io.github.mortuusars.evident.config.Configuration;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.RedstoneTorchArrow;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.SoulTorchArrow;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.TorchArrow;
 import io.github.mortuusars.evident.setup.ModTags;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
@@ -13,7 +11,6 @@ import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +22,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingGetProjectileEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,7 +42,7 @@ public class TorchShooting {
             else
                 arrow = new TorchArrow(level, position.x(), position.y(), position.z());
 
-            arrow.setBaseDamage(CommonConfig.SHOOTING_TORCHES_DAMAGE.get());
+            arrow.setBaseDamage(Configuration.SHOOTING_TORCHES_DAMAGE.get());
             arrow.pickup = AbstractArrow.Pickup.ALLOWED;
             if (stack.getItem() instanceof BlockItem item)
                 arrow.setTorchItem(item);
@@ -55,7 +51,7 @@ public class TorchShooting {
     };
 
     public static void registerDispenserBehaviours() {
-        if (CommonConfig.SHOOTING_TORCHES_DISPENSER.get()) {
+        if (Configuration.SHOOTING_TORCHES_DISPENSER.get()) {
             DispenserBlock.registerBehavior(Items.TORCH, TorchShooting.DISPENSER_BEHAVIOR);
             DispenserBlock.registerBehavior(Items.SOUL_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
             DispenserBlock.registerBehavior(Items.REDSTONE_TORCH, TorchShooting.DISPENSER_BEHAVIOR);
@@ -92,7 +88,7 @@ public class TorchShooting {
         else
             torchArrow = new TorchArrow(level, shooter);
 
-        torchArrow.setBaseDamage(CommonConfig.SHOOTING_TORCHES_DAMAGE.get());
+        torchArrow.setBaseDamage(Configuration.SHOOTING_TORCHES_DAMAGE.get());
         if (itemStack.getItem() instanceof BlockItem blockItem)
             torchArrow.setTorchItem(blockItem);
 
@@ -102,7 +98,7 @@ public class TorchShooting {
     @SubscribeEvent
     public static void onGetProjectile(LivingGetProjectileEvent event) {
 
-        if (!CommonConfig.SHOOTING_TORCHES_ENABLED.get())
+        if (!Configuration.SHOOTING_TORCHES_ENABLED.get())
             return;
 
         if (event.getEntity() instanceof Player player) {
@@ -140,7 +136,7 @@ public class TorchShooting {
                 if (projectileSlotIndex == -1) // I shouldn't be -1 there by normal means.
                     return;
 
-                int firstSearchableIndex = CommonConfig.SHOOTING_TORCHES_IGNORE_HOTBAR.get() ? 8 : 0;
+                int firstSearchableIndex = Configuration.SHOOTING_TORCHES_IGNORE_HOTBAR.get() ? 8 : 0;
 
                 // Checking only up to found projectileSlotIndex because further it is taking priority anyway
                 for(int i = firstSearchableIndex; i < projectileSlotIndex; ++i) {
@@ -156,7 +152,7 @@ public class TorchShooting {
 
     @SubscribeEvent
     public static void onArrowLoose(ArrowLooseEvent event) {
-        if (!CommonConfig.SHOOTING_TORCHES_ENABLED.get())
+        if (!Configuration.SHOOTING_TORCHES_ENABLED.get())
             return;
 
         Player player = event.getPlayer();
@@ -164,12 +160,12 @@ public class TorchShooting {
         ItemStack weapon = event.getBow();
 
         // Crossbow is damaged by 1 for each shoot by default - this handles increased durability cost:
-        if (!level.isClientSide && weapon.getItem() instanceof CrossbowItem && CommonConfig.SHOOTING_TORCHES_DURABILITY_COST.get() > 1) {
+        if (!level.isClientSide && weapon.getItem() instanceof CrossbowItem && Configuration.SHOOTING_TORCHES_DURABILITY_COST.get() > 1) {
             List<ItemStack> chargedProjectiles = CrossbowItem.getChargedProjectiles(weapon);
 
             for (ItemStack chargedProjectileStack : chargedProjectiles) {
                 if (isTorchProjectile(chargedProjectileStack) && !weapon.isEmpty()) {
-                    weapon.hurtAndBreak(CommonConfig.SHOOTING_TORCHES_DURABILITY_COST.get() - 1, player,
+                    weapon.hurtAndBreak(Configuration.SHOOTING_TORCHES_DURABILITY_COST.get() - 1, player,
                             pl -> pl.broadcastBreakEvent(player.getUsedItemHand()));
                 }
             }
@@ -210,7 +206,7 @@ public class TorchShooting {
                         SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 1F, 0.6F + (power * 0.6F) + (level.random.nextFloat() * 0.2F));
 
                 if (!level.isClientSide) {
-                    weapon.hurtAndBreak(CommonConfig.SHOOTING_TORCHES_DURABILITY_COST.get(), player,
+                    weapon.hurtAndBreak(Configuration.SHOOTING_TORCHES_DURABILITY_COST.get(), player,
                             pl -> pl.broadcastBreakEvent(player.getUsedItemHand()));
                 }
 

@@ -1,4 +1,4 @@
-package io.github.mortuusars.evident.recipe;
+package io.github.mortuusars.evident.content.chopping_block;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

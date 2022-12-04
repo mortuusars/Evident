@@ -1,8 +1,7 @@
 package io.github.mortuusars.evident.mixin;
 
-import io.github.mortuusars.evident.behaviour.torch_shooting.TorchShooting;
-import io.github.mortuusars.evident.behaviour.torch_shooting.TorchType;
-import io.github.mortuusars.evident.setup.ModTags;
+import io.github.mortuusars.evident.content.torch_shooting.TorchShooting;
+import io.github.mortuusars.evident.content.torch_shooting.TorchType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;

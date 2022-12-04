@@ -1,9 +1,9 @@
 package io.github.mortuusars.evident.setup;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.entity.RedstoneTorchArrow;
-import io.github.mortuusars.evident.entity.SoulTorchArrow;
-import io.github.mortuusars.evident.entity.TorchArrow;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.RedstoneTorchArrow;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.SoulTorchArrow;
+import io.github.mortuusars.evident.content.torch_shooting.arrow.TorchArrow;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;

@@ -1,20 +1,16 @@
-package io.github.mortuusars.evident.entity;
+package io.github.mortuusars.evident.content.torch_shooting.arrow;
 
 import com.mojang.logging.LogUtils;
-import io.github.mortuusars.evident.behaviour.torch_shooting.TorchType;
-import io.github.mortuusars.evident.config.CommonConfig;
+import io.github.mortuusars.evident.content.torch_shooting.TorchType;
+import io.github.mortuusars.evident.config.Configuration;
 import io.github.mortuusars.evident.setup.ModEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -110,7 +106,7 @@ public class TorchArrow extends AbstractArrow {
 
     @Override
     protected void doPostHurtEffects(@NotNull LivingEntity targetEntity) {
-        int seconds = CommonConfig.SHOOTING_TORCHES_IGNITE_SECONDS.get();
+        int seconds = Configuration.SHOOTING_TORCHES_IGNITE_SECONDS.get();
         if (seconds > 0) {
             targetEntity.setSecondsOnFire(seconds);
         }

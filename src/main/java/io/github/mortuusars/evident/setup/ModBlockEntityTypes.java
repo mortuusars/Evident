@@ -1,7 +1,7 @@
 package io.github.mortuusars.evident.setup;
 
 import io.github.mortuusars.evident.Evident;
-import io.github.mortuusars.evident.block.entity.ChoppingBlockBlockEntity;
+import io.github.mortuusars.evident.content.chopping_block.ChoppingBlockBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
