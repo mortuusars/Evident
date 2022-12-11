@@ -1,0 +1,7 @@
+{
+	"parent": "evident:block/chopping_block",
+	"textures": {
+		"top": "evident:/block/damaged_chopping_block_top",
+		"side_chip": "evident:/block/damaged_chopping_block_side"
+	}
+}

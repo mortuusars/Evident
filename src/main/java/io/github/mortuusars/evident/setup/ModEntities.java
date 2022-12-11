@@ -24,13 +24,13 @@ public class ModEntities {
             () -> EntityType.Builder.<SoulTorchArrow>of(SoulTorchArrow::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F)
                     .fireImmune()
-                    .build("torch_arrow"));
+                    .build("soul_torch_arrow"));
 
     public static final RegistryObject<EntityType<RedstoneTorchArrow>> REDSTONE_TORCH_ARROW = ENTITIES.register("redstone_torch_arrow",
             () -> EntityType.Builder.<RedstoneTorchArrow>of(RedstoneTorchArrow::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F)
                     .fireImmune()
-                    .build("torch_arrow"));
+                    .build("redstone_torch_arrow"));
 
     public static void register(IEventBus bus) {
         ENTITIES.register(bus);

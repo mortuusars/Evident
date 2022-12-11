@@ -19,6 +19,8 @@ public class Configuration {
     public static final ForgeConfigSpec.IntValue SHOOTING_TORCHES_SLOWNESS_SECONDS;
     public static final ForgeConfigSpec.BooleanValue SHOOTING_TORCHES_IGNORE_HOTBAR;
 
+    public static final ForgeConfigSpec.DoubleValue CHOPPING_BLOCK_DAMAGE_CHANCE;
+
     public static final ForgeConfigSpec.BooleanValue CHANGE_DEFAULT_COBWEB_SOUND;
 
     static {
@@ -69,6 +71,16 @@ public class Configuration {
                         "*Projectiles in offhand (or main hand when shooting from offhand) will always take priority.")
                 .define("IgnoreHotbar", false);
         builder.pop();
+
+
+        builder.push("ChoppingBlock");
+
+        CHOPPING_BLOCK_DAMAGE_CHANCE = builder
+                .comment("Chance of the chopping block being damaged while chopping.", "Set to 0 to disable damage.")
+                .defineInRange("DamageChance", 0.2D, 0.0D, 1.0D);
+
+        builder.pop();
+
 
         CHANGE_DEFAULT_COBWEB_SOUND = builder
                 .comment("Change Cobweb sound to something that's not stone ¯\\_(ツ)_/¯")

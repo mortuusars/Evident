@@ -6,6 +6,7 @@ import io.github.mortuusars.evident.setup.ModTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,6 +21,11 @@ public class BlockTags extends BlockTagsProvider {
                 .add(Blocks.COBWEB)
                 .add(Blocks.DEAD_BUSH)
                 .add(ModBlocks.COBWEB_CORNER.get());
+
+        tag(ModTags.CHOPPING_BLOCK)
+                .add(ModBlocks.CHOPPING_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.CHOPPING_BLOCK.get());
 
         tag(ModTags.COBWEB)
                 .add(Blocks.COBWEB)

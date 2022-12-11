@@ -18,5 +18,7 @@ public class ItemModels extends ItemModelProvider {
                 mcLoc("item/generated"), "layer0", modLoc("block/cobweb_corner"));
 
         withExistingParent(ModBlocks.CHOPPING_BLOCK.get().getRegistryName().getPath(), modLoc("block/chopping_block"));
+        withExistingParent(ModBlocks.CHIPPED_CHOPPING_BLOCK.get().getRegistryName().getPath(), modLoc("block/chipped_chopping_block"));
+        withExistingParent(ModBlocks.DAMAGED_CHOPPING_BLOCK.get().getRegistryName().getPath(), modLoc("block/damaged_chopping_block"));
     }
 }

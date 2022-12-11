@@ -28,6 +28,14 @@ public class ModBlocks {
             () -> new ChoppingBlockBlock(BlockBehaviour.Properties.of(Material.WOOD)
                     .sound(SoundType.WOOD)
                     .strength(2F)));
+    public static final RegistryObject<ChoppingBlockBlock> CHIPPED_CHOPPING_BLOCK = BLOCKS.register("chipped_chopping_block",
+            () -> new ChoppingBlockBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                    .sound(SoundType.WOOD)
+                    .strength(1.75F)));
+    public static final RegistryObject<ChoppingBlockBlock> DAMAGED_CHOPPING_BLOCK = BLOCKS.register("damaged_chopping_block",
+            () -> new ChoppingBlockBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                    .sound(SoundType.WOOD)
+                    .strength(1.5F)));
 
     public static void register(IEventBus bus){
         BLOCKS.register(bus);

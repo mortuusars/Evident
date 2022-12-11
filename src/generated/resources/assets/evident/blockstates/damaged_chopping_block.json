@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "evident:block/damaged_chopping_block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "evident:block/damaged_chopping_block"
+    },
+    "facing=west": {
+      "model": "evident:block/damaged_chopping_block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "evident:block/damaged_chopping_block",
+      "y": 270
+    }
+  }
+}

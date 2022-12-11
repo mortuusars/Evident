@@ -20,5 +20,10 @@ public class ModTags {
 
     public static final TagKey<Block> COBWEB = ForgeRegistries.BLOCKS.tags().createTagKey(new ResourceLocation("forge", "cobwebs"));
 
+
+    public static final TagKey<Item> CHOPPING_BLOCK_ITEM = ItemTags.create(Evident.resource("chopping_block"));
     public static final TagKey<Item> CHOPPING_BLOCK_WEDGEABLE = ItemTags.create(Evident.resource("chopping_block/wedgeables"));
+    public static final TagKey<Block> CHOPPING_BLOCK = ForgeRegistries.BLOCKS.tags().createTagKey(Evident.resource("chopping_block"));
+
+    public static final TagKey<Item> RENDER_UPRIGHT = ItemTags.create(new ResourceLocation("create", "upright_on_belt"));
 }

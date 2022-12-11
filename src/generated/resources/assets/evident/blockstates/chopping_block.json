@@ -1,34 +1,19 @@
 {
   "variants": {
-    "facing=north,waterlogged=false": {
-      "model": "evident:block/chopping_block"
-    },
-    "facing=south,waterlogged=false": {
+    "facing=north": {
       "model": "evident:block/chopping_block",
       "y": 180
     },
-    "facing=west,waterlogged=false": {
-      "model": "evident:block/chopping_block",
-      "y": 270
-    },
-    "facing=east,waterlogged=false": {
-      "model": "evident:block/chopping_block",
-      "y": 90
-    },
-    "facing=north,waterlogged=true": {
+    "facing=south": {
       "model": "evident:block/chopping_block"
     },
-    "facing=south,waterlogged=true": {
-      "model": "evident:block/chopping_block",
-      "y": 180
-    },
-    "facing=west,waterlogged=true": {
-      "model": "evident:block/chopping_block",
-      "y": 270
-    },
-    "facing=east,waterlogged=true": {
+    "facing=west": {
       "model": "evident:block/chopping_block",
       "y": 90
+    },
+    "facing=east": {
+      "model": "evident:block/chopping_block",
+      "y": 270
     }
   }
 }

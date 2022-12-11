@@ -12,7 +12,11 @@ public class ModBlockEntityTypes {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Evident.ID);
 
     public static final RegistryObject<BlockEntityType<ChoppingBlockBlockEntity>> CHOPPING_BLOCK = BLOCK_ENTITIES.register("chopping_block",
-            () -> BlockEntityType.Builder.of(ChoppingBlockBlockEntity::new, ModBlocks.CHOPPING_BLOCK.get()).build(null));
+            () -> BlockEntityType.Builder.of(ChoppingBlockBlockEntity::new,
+                    ModBlocks.CHOPPING_BLOCK.get(),
+                    ModBlocks.CHIPPED_CHOPPING_BLOCK.get(),
+                    ModBlocks.DAMAGED_CHOPPING_BLOCK.get())
+                .build(null));
 
     public static void register(IEventBus bus) {
         BLOCK_ENTITIES.register(bus);

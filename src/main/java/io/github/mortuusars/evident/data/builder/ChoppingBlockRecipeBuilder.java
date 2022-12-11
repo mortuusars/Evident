@@ -65,6 +65,8 @@ public class ChoppingBlockRecipeBuilder {
 
     public void build(Consumer<FinishedRecipe> consumerIn) {
         ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.ingredient.getItems()[0].getItem());
+        if (location.toString().equals("minecraft:barrier"))
+            throw new IllegalArgumentException("Cannot get path from the ingredient: '" + ingredient.toJson() + "'. Provide custom save path.");
         this.build(consumerIn, Evident.ID + ":chopping/" + location.getPath());
     }
 

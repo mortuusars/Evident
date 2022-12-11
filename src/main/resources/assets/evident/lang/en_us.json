@@ -1,0 +1,11 @@
+{
+  "entity.evident.torch_arrow": "Torch",
+  "entity.evident.soul_torch_arrow": "Soul Torch",
+  "entity.evident.redstone_torch_arrow": "Redstone Torch",
+  "block.evident.cobweb_corner": "Corner Cobweb",
+  "block.evident.chopping_block": "Chopping Block",
+  "block.evident.chipped_chopping_block": "Chipped Chopping Block",
+  "block.evident.damaged_chopping_block": "Damaged Chopping Block",
+  "block.evident.chopping_block.invalid_item": "Can't chop this.",
+  "block.evident.cutting_board.invalid_tool": "Too blunt to chop."
+}

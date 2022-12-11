@@ -18,6 +18,12 @@ public class ModItems {
     public static final RegistryObject<BlockItem> CHOPPING_BLOCK = ITEMS.register("chopping_block",
             () -> new BlockItem(ModBlocks.CHOPPING_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
 
+    public static final RegistryObject<BlockItem> CHIPPED_CHOPPING_BLOCK = ITEMS.register("chipped_chopping_block",
+            () -> new BlockItem(ModBlocks.CHIPPED_CHOPPING_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+
+    public static final RegistryObject<BlockItem> DAMAGED_CHOPPING_BLOCK = ITEMS.register("damaged_chopping_block",
+            () -> new BlockItem(ModBlocks.DAMAGED_CHOPPING_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+
     public static void register(IEventBus bus){
         ITEMS.register(bus);
     }

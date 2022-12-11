@@ -1,0 +1,22 @@
+{
+  "type": "evident:chopping",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_wood"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/axes"
+  },
+  "result": [
+    {
+      "item": "minecraft:acacia_planks",
+      "count": 4
+    },
+    {
+      "item": "minecraft:acacia_planks",
+      "count": 2,
+      "chance": 0.4
+    }
+  ]
+}
