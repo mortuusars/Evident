@@ -64,6 +64,10 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
         return nonnulllist;
     }
 
+    public Ingredient getInput() {
+        return this.input;
+    }
+
     public Ingredient getTool() {
         return this.tool;
     }

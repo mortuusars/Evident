@@ -8,6 +8,8 @@ import io.github.mortuusars.evident.config.Configuration;
 import io.github.mortuusars.evident.events.ClientEvents;
 import io.github.mortuusars.evident.events.CommonEvents;
 import io.github.mortuusars.evident.setup.*;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -50,8 +52,18 @@ public class Evident
         MinecraftForge.EVENT_BUS.register(CommonEvents.class);
     }
 
+    /**
+     * Creates resource location in the mod namespace with the given path.
+     */
     public static ResourceLocation resource(String path) {
         return new ResourceLocation(ID, path);
+    }
+
+    /**
+     * Creates TranslatableComponent prefixed with the mod namespace. ('evident.path'').
+     */
+    public static MutableComponent translate(String path, Object... args) {
+        return new TranslatableComponent(Evident.ID + "." + path, args);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

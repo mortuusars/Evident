@@ -54,5 +54,11 @@ public class ChoppingRecipes {
         wood.accept(Items.STRIPPED_DARK_OAK_LOG, Items.DARK_OAK_PLANKS);
         wood.accept(Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_PLANKS);
         wood.accept(Items.STRIPPED_WARPED_STEM, Items.WARPED_PLANKS);
+
+        ChoppingBlockRecipeBuilder.chopping(Ingredient.of(Items.DARK_OAK_BOAT), Ingredient.of(ForgeTags.TOOLS_AXES), Items.ACACIA_SAPLING, 4)
+                .addResultWithChance(Items.ACACIA_BUTTON, 2)
+                .addResultWithChance(Items.ACACIA_PRESSURE_PLATE, 0.4F, 2)
+                .addResultWithChance(Items.ACACIA_LEAVES, 2)
+                .build(consumer);
     }
 }

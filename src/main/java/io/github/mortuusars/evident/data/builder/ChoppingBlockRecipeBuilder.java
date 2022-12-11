@@ -80,6 +80,8 @@ public class ChoppingBlockRecipeBuilder {
     }
 
     public void build(Consumer<FinishedRecipe> consumerIn, ResourceLocation id) {
+        // Sort outputs with larger chance first:
+        results.sort((result1, result2) -> result1.getChance() > result2.getChance() ? -1 : 1);
         consumerIn.accept(new ChoppingBlockRecipeBuilder.Result(id, this.ingredient, this.tool, this.results));
     }
 

@@ -7,5 +7,8 @@
   "block.evident.chipped_chopping_block": "Chipped Chopping Block",
   "block.evident.damaged_chopping_block": "Damaged Chopping Block",
   "block.evident.chopping_block.invalid_item": "Can't chop this.",
-  "block.evident.cutting_board.invalid_tool": "Too blunt to chop."
+  "block.evident.cutting_board.invalid_tool": "Too blunt to chop.",
+
+  "evident.gui.jei.category.chopping": "Chopping",
+  "evident.gui.jei.chance": "%1$s%% chance"
 }
