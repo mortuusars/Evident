@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:spruce_wood"
+      "tag": "minecraft:planks"
     }
   ],
   "tool": {
@@ -10,13 +10,12 @@
   },
   "result": [
     {
-      "item": "minecraft:spruce_planks",
+      "item": "minecraft:stick",
       "count": 4
     },
     {
-      "item": "minecraft:spruce_planks",
-      "count": 2,
-      "chance": 0.4
+      "item": "minecraft:stick",
+      "chance": 0.5
     }
   ]
 }

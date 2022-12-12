@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:stripped_crimson_stem"
+      "tag": "minecraft:crimson_stems"
     }
   ],
   "tool": {

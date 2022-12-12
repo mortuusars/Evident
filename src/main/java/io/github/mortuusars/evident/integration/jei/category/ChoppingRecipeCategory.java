@@ -25,7 +25,7 @@ public class ChoppingRecipeCategory implements IRecipeCategory<ChoppingBlockReci
     public static final ResourceLocation UID = Evident.resource("chopping");
     private static final ResourceLocation TEXTURE = Evident.resource("textures/gui/jei/chopping_block.png");
     private static final int OUTPUT_X = 80;
-    private static final int OUTPUT_Y = 20;
+    private static final int OUTPUT_Y = 24;
     private final Component title;
     private final IDrawable background;
     private final IDrawable icon;
@@ -122,9 +122,9 @@ public class ChoppingRecipeCategory implements IRecipeCategory<ChoppingBlockReci
             int xOffset = centerX + (i % 2 == 0 ? 0 : 19);
             int yOffset = centerY + ((i / 2) * 19);
             if (results.get(i).getChance() != 1) {
-                slotChance.draw(stack, OUTPUT_X - 1 + xOffset, OUTPUT_X - 1 + yOffset);
+                slotChance.draw(stack, OUTPUT_X - 1 + xOffset, OUTPUT_Y - 1 + yOffset);
             } else {
-                slot.draw(stack, OUTPUT_X - 1 + xOffset, OUTPUT_X - 1 + yOffset);
+                slot.draw(stack, OUTPUT_X - 1 + xOffset, OUTPUT_Y - 1 + yOffset);
             }
         }
     }

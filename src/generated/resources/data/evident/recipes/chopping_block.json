@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LL",
+    "NN"
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "N": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "result": {
+    "item": "evident:chopping_block"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "evident:chopping",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_wart_block"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/axes"
+  },
+  "result": [
+    {
+      "item": "minecraft:crimson_roots",
+      "chance": 0.2
+    },
+    {
+      "item": "minecraft:crimson_fungus",
+      "chance": 0.1
+    }
+  ]
+}

@@ -37,7 +37,7 @@ public class ChoppingBlockRecipeBuilder {
         return new ChoppingBlockRecipeBuilder(ingredient, tool, mainResult, count, 1);
     }
 
-    public static ChoppingBlockRecipeBuilder chopping(Ingredient ingredient, Ingredient tool, ItemLike mainResult, int count, int chance) {
+    public static ChoppingBlockRecipeBuilder chopping(Ingredient ingredient, Ingredient tool, ItemLike mainResult, int count, float chance) {
         return new ChoppingBlockRecipeBuilder(ingredient, tool, mainResult, count, chance);
     }
 
@@ -66,16 +66,17 @@ public class ChoppingBlockRecipeBuilder {
     public void build(Consumer<FinishedRecipe> consumerIn) {
         ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.ingredient.getItems()[0].getItem());
         if (location.toString().equals("minecraft:barrier"))
-            throw new IllegalArgumentException("Cannot get path from the ingredient: '" + ingredient.toJson() + "'. Provide custom save path.");
-        this.build(consumerIn, Evident.ID + ":chopping/" + location.getPath());
+            throw new IllegalStateException("Cannot get path from the ingredient: '" + ingredient.toJson() + "'. Provide custom save path.");
+        this.build(consumerIn, location.getPath());
     }
 
     public void build(Consumer<FinishedRecipe> consumerIn, String save) {
         ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(this.ingredient.getItems()[0].getItem());
-        if ((new ResourceLocation(save)).equals(resourcelocation)) {
+        ResourceLocation saveLocation = new ResourceLocation(Evident.ID, "chopping/" + save);
+        if (saveLocation.equals(resourcelocation)) {
             throw new IllegalStateException("Chopping Recipe '" + save + "' should remove its 'save' argument as it's the same as the default.");
         } else {
-            this.build(consumerIn, new ResourceLocation(save));
+            this.build(consumerIn, saveLocation);
         }
     }
 

@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:dark_oak_wood"
+      "item": "minecraft:dark_oak_leaves"
     }
   ],
   "tool": {
@@ -10,12 +10,12 @@
   },
   "result": [
     {
-      "item": "minecraft:dark_oak_planks",
-      "count": 4
+      "item": "minecraft:stick",
+      "count": 2,
+      "chance": 0.5
     },
     {
-      "item": "minecraft:dark_oak_planks",
-      "count": 2,
+      "item": "minecraft:dark_oak_sapling",
       "chance": 0.4
     }
   ]

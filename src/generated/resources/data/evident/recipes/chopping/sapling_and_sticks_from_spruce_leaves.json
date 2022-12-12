@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:jungle_log"
+      "item": "minecraft:spruce_leaves"
     }
   ],
   "tool": {
@@ -10,12 +10,12 @@
   },
   "result": [
     {
-      "item": "minecraft:jungle_planks",
-      "count": 4
+      "item": "minecraft:stick",
+      "count": 2,
+      "chance": 0.5
     },
     {
-      "item": "minecraft:jungle_planks",
-      "count": 2,
+      "item": "minecraft:spruce_sapling",
       "chance": 0.4
     }
   ]

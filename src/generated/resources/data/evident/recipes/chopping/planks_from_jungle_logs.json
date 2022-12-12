@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:stripped_jungle_log"
+      "tag": "minecraft:jungle_logs"
     }
   ],
   "tool": {

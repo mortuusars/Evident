@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:birch_log"
+      "tag": "minecraft:spruce_logs"
     }
   ],
   "tool": {
@@ -10,11 +10,11 @@
   },
   "result": [
     {
-      "item": "minecraft:birch_planks",
+      "item": "minecraft:spruce_planks",
       "count": 4
     },
     {
-      "item": "minecraft:birch_planks",
+      "item": "minecraft:spruce_planks",
       "count": 2,
       "chance": 0.4
     }

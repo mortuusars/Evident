@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:jungle_wood"
+      "tag": "minecraft:birch_logs"
     }
   ],
   "tool": {
@@ -10,11 +10,11 @@
   },
   "result": [
     {
-      "item": "minecraft:jungle_planks",
+      "item": "minecraft:birch_planks",
       "count": 4
     },
     {
-      "item": "minecraft:jungle_planks",
+      "item": "minecraft:birch_planks",
       "count": 2,
       "chance": 0.4
     }

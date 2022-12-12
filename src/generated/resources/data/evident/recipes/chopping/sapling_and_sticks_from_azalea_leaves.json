@@ -1,0 +1,22 @@
+{
+  "type": "evident:chopping",
+  "ingredients": [
+    {
+      "item": "minecraft:azalea_leaves"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/axes"
+  },
+  "result": [
+    {
+      "item": "minecraft:stick",
+      "count": 2,
+      "chance": 0.5
+    },
+    {
+      "item": "minecraft:azalea",
+      "chance": 0.2
+    }
+  ]
+}

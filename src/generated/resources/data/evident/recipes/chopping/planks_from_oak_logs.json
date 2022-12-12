@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:oak_wood"
+      "tag": "minecraft:oak_logs"
     }
   ],
   "tool": {

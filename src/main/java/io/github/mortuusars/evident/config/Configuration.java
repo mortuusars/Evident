@@ -77,7 +77,7 @@ public class Configuration {
 
         CHOPPING_BLOCK_DAMAGE_CHANCE = builder
                 .comment("Chance of the chopping block being damaged while chopping.", "Set to 0 to disable damage.")
-                .defineInRange("DamageChance", 0.2D, 0.0D, 1.0D);
+                .defineInRange("DamageChance", 0.01D, 0.0D, 1.0D);
 
         builder.pop();
 

@@ -2,7 +2,7 @@
   "type": "evident:chopping",
   "ingredients": [
     {
-      "item": "minecraft:warped_stem"
+      "tag": "minecraft:dark_oak_logs"
     }
   ],
   "tool": {
@@ -10,11 +10,11 @@
   },
   "result": [
     {
-      "item": "minecraft:warped_planks",
+      "item": "minecraft:dark_oak_planks",
       "count": 4
     },
     {
-      "item": "minecraft:warped_planks",
+      "item": "minecraft:dark_oak_planks",
       "count": 2,
       "chance": 0.4
     }
