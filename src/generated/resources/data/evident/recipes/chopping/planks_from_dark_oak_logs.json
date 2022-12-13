@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:dark_oak_logs"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:dark_oak_logs"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:dark_oak_planks",
       "count": 4

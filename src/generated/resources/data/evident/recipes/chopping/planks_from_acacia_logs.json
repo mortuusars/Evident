@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:acacia_logs"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:acacia_logs"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:acacia_planks",
       "count": 4

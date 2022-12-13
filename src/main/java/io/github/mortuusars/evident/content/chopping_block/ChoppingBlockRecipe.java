@@ -72,13 +72,6 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
         return this.tool;
     }
 
-    public NonNullList<Ingredient> getIngredientsAndTool() {
-        NonNullList<Ingredient> nonnulllist = NonNullList.create();
-        nonnulllist.add(this.input);
-        nonnulllist.add(this.tool);
-        return nonnulllist;
-    }
-
     @Override
     public ItemStack assemble(RecipeWrapper inv) {
         return this.results.get(0).getStack().copy();
@@ -89,6 +82,10 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
         return this.results.get(0).getStack();
     }
 
+    /**
+     * Gets all results as ItemStacks ignoring the chances.
+     * @return
+     */
     public List<ItemStack> getResults() {
         return getRollableResults().stream()
                 .map(ChanceResult::getStack)
@@ -142,42 +139,40 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
         public ChoppingBlockRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
             final String group = GsonHelper.getAsString(json, "group", "");
 
-            final NonNullList<Ingredient> inputItems = readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
+            final Ingredient ingredient = Ingredient.fromJson(json.getAsJsonObject("ingredient"));
             final JsonObject toolObject = GsonHelper.getAsJsonObject(json, "tool");
             final Ingredient tool = Ingredient.fromJson(toolObject);
-            if (inputItems.isEmpty()) {
+            if (ingredient.isEmpty()) {
                 throw new JsonParseException("No ingredients for chopping recipe");
-            } else if (inputItems.size() > 1) {
-                throw new JsonParseException("Too many ingredients for chopping recipe! Please define only one ingredient");
             } else if (tool.isEmpty()) {
                 throw new JsonParseException("No tool for chopping recipe");
             } else {
-                final NonNullList<ChanceResult> results = readResults(GsonHelper.getAsJsonArray(json, "result"));
+                final NonNullList<ChanceResult> results = readResults(GsonHelper.getAsJsonArray(json, "results"));
                 if (results.size() > 4) {
                     throw new JsonParseException("Too many results for chopping recipe! The maximum quantity of unique results is 4");
                 } else {
-                    return new ChoppingBlockRecipe(recipeId, group, inputItems.get(0), results, tool);
+                    return new ChoppingBlockRecipe(recipeId, group, ingredient, results, tool);
                 }
             }
-        }
-
-        private static NonNullList<Ingredient> readIngredients(JsonArray ingredientArray) {
-            NonNullList<Ingredient> nonnulllist = NonNullList.create();
-            for (int i = 0; i < ingredientArray.size(); ++i) {
-                Ingredient ingredient = Ingredient.fromJson(ingredientArray.get(i));
-                if (!ingredient.isEmpty()) {
-                    nonnulllist.add(ingredient);
-                }
-            }
-            return nonnulllist;
         }
 
         private static NonNullList<ChanceResult> readResults(JsonArray resultArray) {
             NonNullList<ChanceResult> results = NonNullList.create();
             for (JsonElement result : resultArray) {
-                results.add(ChanceResult.deserialize(result));
+                results.add(ChanceResult.fromJson(result));
             }
             return results;
+        }
+
+        @Override
+        public void toNetwork(FriendlyByteBuf buffer, ChoppingBlockRecipe recipe) {
+            buffer.writeUtf(recipe.group);
+            recipe.input.toNetwork(buffer);
+            recipe.tool.toNetwork(buffer);
+            buffer.writeVarInt(recipe.results.size());
+            for (ChanceResult result : recipe.results) {
+                result.write(buffer);
+            }
         }
 
         @Nullable
@@ -190,21 +185,10 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
             int resultsCount = buffer.readVarInt();
             NonNullList<ChanceResult> results = NonNullList.withSize(resultsCount, ChanceResult.EMPTY);
             for (int i = 0; i < results.size(); ++i) {
-                results.set(i, ChanceResult.read(buffer));
+                results.set(i, ChanceResult.fromBuffer(buffer));
             }
 
             return new ChoppingBlockRecipe(recipeId, group, input, results, tool);
-        }
-
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, ChoppingBlockRecipe recipe) {
-            buffer.writeUtf(recipe.group);
-            recipe.input.toNetwork(buffer);
-            recipe.tool.toNetwork(buffer);
-            buffer.writeVarInt(recipe.results.size());
-            for (ChanceResult result : recipe.results) {
-                result.write(buffer);
-            }
         }
     }
 }

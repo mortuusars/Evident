@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:spruce_logs"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:spruce_logs"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:spruce_planks",
       "count": 4

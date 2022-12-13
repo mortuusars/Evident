@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:jungle_logs"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:jungle_logs"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:jungle_planks",
       "count": 4

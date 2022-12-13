@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "item": "minecraft:warped_wart_block"
-    }
-  ],
+  "ingredient": {
+    "item": "minecraft:warped_wart_block"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:warped_roots",
       "chance": 0.2

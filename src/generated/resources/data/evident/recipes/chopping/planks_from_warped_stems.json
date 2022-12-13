@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:warped_stems"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:warped_stems"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:warped_planks",
       "count": 4

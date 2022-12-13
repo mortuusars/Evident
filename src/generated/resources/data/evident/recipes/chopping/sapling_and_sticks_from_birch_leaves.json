@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "item": "minecraft:birch_leaves"
-    }
-  ],
+  "ingredient": {
+    "item": "minecraft:birch_leaves"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:stick",
       "count": 2,

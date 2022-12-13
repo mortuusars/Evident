@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:birch_logs"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:birch_logs"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:birch_planks",
       "count": 4

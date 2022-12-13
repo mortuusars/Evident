@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Used to create Chopping recipes with data generation.
+ */
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class ChoppingBlockRecipeBuilder {
@@ -102,25 +105,14 @@ public class ChoppingBlockRecipeBuilder {
 
         @Override
         public void serializeRecipeData(JsonObject json) {
-            JsonArray arrayIngredients = new JsonArray();
-            arrayIngredients.add(this.ingredient.toJson());
-            json.add("ingredients", arrayIngredients);
-
+            json.add("ingredient", this.ingredient.toJson());
             json.add("tool", this.tool.toJson());
 
             JsonArray arrayResults = new JsonArray();
             for (ChanceResult result : this.results) {
-                JsonObject jsonobject = new JsonObject();
-                jsonobject.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getStack().getItem()).toString());
-                if (result.getStack().getCount() > 1) {
-                    jsonobject.addProperty("count", result.getStack().getCount());
-                }
-                if (result.getChance() < 1) {
-                    jsonobject.addProperty("chance", result.getChance());
-                }
-                arrayResults.add(jsonobject);
+                arrayResults.add(result.toJson());
             }
-            json.add("result", arrayResults);
+            json.add("results", arrayResults);
         }
 
         @Override

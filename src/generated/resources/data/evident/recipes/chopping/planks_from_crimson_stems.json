@@ -1,14 +1,12 @@
 {
   "type": "evident:chopping",
-  "ingredients": [
-    {
-      "tag": "minecraft:crimson_stems"
-    }
-  ],
+  "ingredient": {
+    "tag": "minecraft:crimson_stems"
+  },
   "tool": {
     "tag": "forge:tools/axes"
   },
-  "result": [
+  "results": [
     {
       "item": "minecraft:crimson_planks",
       "count": 4
