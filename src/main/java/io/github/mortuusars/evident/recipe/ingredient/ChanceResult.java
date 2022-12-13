@@ -8,14 +8,13 @@ import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.ItemStack;
-
-import javax.json.JsonException;
 import java.util.Optional;
 import java.util.Random;
 
 /**
  * Credits to the Create team (and Farmer's Delight) for the implementation of results with chances!
  */
+@SuppressWarnings({"deprecation", "ClassCanBeRecord", "Convert2MethodRef"})
 public class ChanceResult {
 
     public static final Codec<ChanceResult> CODEC = RecordCodecBuilder.create(instance -> instance.group(
@@ -26,8 +25,7 @@ public class ChanceResult {
                     Codec.FLOAT.optionalFieldOf("chance", 1F).forGetter(ChanceResult::getChance))
             .apply(instance, (item, count, compoundTag, chance) -> {
                 ItemStack stack = new ItemStack(item, count);
-                if (compoundTag.isPresent())
-                    stack.setTag(compoundTag.get());
+                compoundTag.ifPresent(tag -> stack.setTag(tag));
                 return new ChanceResult(stack, chance);
             }));
 
@@ -67,7 +65,7 @@ public class ChanceResult {
 
     public JsonElement toJson() {
         return CODEC.encodeStart(JsonOps.INSTANCE, this).getOrThrow(false,
-                (String error) -> { throw new JsonException(error); });
+                (String error) -> { throw new IllegalStateException(error); });
     }
 
     public static ChanceResult fromJson(JsonElement jsonElement) {
@@ -75,7 +73,7 @@ public class ChanceResult {
             throw new JsonSyntaxException("Must be a json object");
 
         return CODEC.decode(JsonOps.INSTANCE, jsonElement).getOrThrow(false,
-                (String error) -> { throw new JsonException(error); }).getFirst();
+                (String error) -> { throw new IllegalStateException(error); }).getFirst();
     }
 
     public void write(FriendlyByteBuf buf) {

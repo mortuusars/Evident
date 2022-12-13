@@ -33,9 +33,9 @@ e1c85b857ecb18da379f4324a4f80a0363170fa3 data/evident/recipes/chopping/warped_wa
 f1fa5127011f9110939806b49dd4fc640e1c72c1 data/evident/recipes/chopping_block.json
 21bf4c76c253f16941beda2d5d5490aa583a3c24 data/evident/recipes/cobweb_corner.json
 aa14e585a3a3acd2f9c506616d5e838d42532c9c data/evident/tags/blocks/burnables.json
-03ccc8782216cd15dd32edfa3a1bf678ad3e9e79 data/evident/tags/blocks/chopping_block.json
+704ab44146a8905b122979b24011025b4bdca0ae data/evident/tags/blocks/chopping_block.json
 704ab44146a8905b122979b24011025b4bdca0ae data/evident/tags/items/chopping_block.json
 0cc98aa5e7ba8c1577804a682a47ccd85238e97f data/evident/tags/items/chopping_block/wedgeables.json
 499665178399b1f1890c139908171fc70b2bc405 data/evident/tags/items/igniters.json
 bed1df445264b8e6e83f2ae18b56292407803ffe data/forge/tags/blocks/cobwebs.json
-03ccc8782216cd15dd32edfa3a1bf678ad3e9e79 data/minecraft/tags/blocks/mineable/axe.json
+704ab44146a8905b122979b24011025b4bdca0ae data/minecraft/tags/blocks/mineable/axe.json

@@ -19,6 +19,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -48,17 +49,17 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return this.id;
     }
 
     @Override
-    public String getGroup() {
+    public @NotNull String getGroup() {
         return this.group;
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> nonnulllist = NonNullList.create();
         nonnulllist.add(this.input);
         return nonnulllist;
@@ -73,18 +74,17 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public ItemStack assemble(RecipeWrapper inv) {
+    public @NotNull ItemStack assemble(@NotNull RecipeWrapper inv) {
         return this.results.get(0).getStack().copy();
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public @NotNull ItemStack getResultItem() {
         return this.results.get(0).getStack();
     }
 
     /**
      * Gets all results as ItemStacks ignoring the chances.
-     * @return
      */
     public List<ItemStack> getResults() {
         return getRollableResults().stream()
@@ -108,7 +108,7 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public boolean matches(RecipeWrapper container, Level pLevel) {
+    public boolean matches(RecipeWrapper container, @NotNull Level pLevel) {
         if (container.isEmpty())
             return false;
         return input.test(container.getItem(0));
@@ -124,19 +124,20 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return ModRecipeSerializers.CHOPPING.get();
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return ModRecipeTypes.CHOPPING.get();
     }
 
     public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<ChoppingBlockRecipe> {
 
         @Override
-        public ChoppingBlockRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
+        public @NotNull ChoppingBlockRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject json) {
+
             final String group = GsonHelper.getAsString(json, "group", "");
 
             final Ingredient ingredient = Ingredient.fromJson(json.getAsJsonObject("ingredient"));
@@ -147,21 +148,17 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
             } else if (tool.isEmpty()) {
                 throw new JsonParseException("No tool for chopping recipe");
             } else {
-                final NonNullList<ChanceResult> results = readResults(GsonHelper.getAsJsonArray(json, "results"));
+                final NonNullList<ChanceResult> results = NonNullList.create();
+                JsonArray resultsJsonArray = GsonHelper.getAsJsonArray(json, "results");
+                for (JsonElement result : resultsJsonArray) {
+                    results.add(ChanceResult.fromJson(result));
+                }
                 if (results.size() > 4) {
                     throw new JsonParseException("Too many results for chopping recipe! The maximum quantity of unique results is 4");
                 } else {
                     return new ChoppingBlockRecipe(recipeId, group, ingredient, results, tool);
                 }
             }
-        }
-
-        private static NonNullList<ChanceResult> readResults(JsonArray resultArray) {
-            NonNullList<ChanceResult> results = NonNullList.create();
-            for (JsonElement result : resultArray) {
-                results.add(ChanceResult.fromJson(result));
-            }
-            return results;
         }
 
         @Override
@@ -175,9 +172,10 @@ public class ChoppingBlockRecipe implements Recipe<RecipeWrapper> {
             }
         }
 
+        @SuppressWarnings("Java8ListReplaceAll")
         @Nullable
         @Override
-        public ChoppingBlockRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
+        public ChoppingBlockRecipe fromNetwork(@NotNull ResourceLocation recipeId, FriendlyByteBuf buffer) {
             String group = buffer.readUtf();
             Ingredient input = Ingredient.fromNetwork(buffer);
             Ingredient tool = Ingredient.fromNetwork(buffer);

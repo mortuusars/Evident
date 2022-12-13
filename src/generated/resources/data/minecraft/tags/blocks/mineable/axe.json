@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "evident:chopping_block"
+    "evident:chopping_block",
+    "evident:chipped_chopping_block",
+    "evident:damaged_chopping_block"
   ]
 }

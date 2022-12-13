@@ -13,18 +13,16 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @JeiPlugin
-public class JeiEvidentPlugin implements IModPlugin {
+public class EvidentJeiPlugin implements IModPlugin {
     private static final ResourceLocation ID = Evident.resource("jei_plugin");
 
     @Override
-    public ResourceLocation getPluginUid() {
+    public @NotNull ResourceLocation getPluginUid() {
         return ID;
     }
 
@@ -33,6 +31,7 @@ public class JeiEvidentPlugin implements IModPlugin {
         registration.addRecipeCategories(new ChoppingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         List<ChoppingBlockRecipe> choppingRecipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.CHOPPING.get());
