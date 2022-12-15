@@ -1,13 +1,11 @@
 package io.github.mortuusars.evident;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import io.github.mortuusars.evident.content.torch_shooting.TorchShooting;
 import io.github.mortuusars.evident.config.Configuration;
+import io.github.mortuusars.evident.content.torch_shooting.TorchShooting;
 import io.github.mortuusars.evident.events.ClientEvents;
 import io.github.mortuusars.evident.events.CommonEvents;
 import io.github.mortuusars.evident.setup.*;
+import io.github.mortuusars.evident.world.VillageStructures;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -20,15 +18,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
 
 @Mod(Evident.ID)
 public class Evident
 {
     public static final String ID = "evident";
-    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+//    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+//    private static final Logger LOGGER = LogUtils.getLogger();
 
     public Evident()
     {
@@ -50,6 +47,8 @@ public class Evident
         MinecraftForge.EVENT_BUS.register(TorchShooting.class);
 
         MinecraftForge.EVENT_BUS.register(CommonEvents.class);
+
+        MinecraftForge.EVENT_BUS.addListener(VillageStructures::addVillageBuilding);
     }
 
     /**
