@@ -3,6 +3,7 @@ package io.github.mortuusars.evident.world;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import io.github.mortuusars.evident.Evident;
+import io.github.mortuusars.evident.config.Configuration;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -20,31 +21,48 @@ public class VillageStructures {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     public static void addVillageBuilding(final ServerAboutToStartEvent event) {
-        //TODO: config disable
+
+        if (!Configuration.SPAWN_CHOPPING_CAMP_HOUSES.get())
+            return;
 
         Registry<StructureTemplatePool> templatePools = event.getServer().registryAccess().registry(Registry.TEMPLATE_POOL_REGISTRY).get();
         Registry<StructureProcessorList> processorLists = event.getServer().registryAccess().registry(Registry.PROCESSOR_LIST_REGISTRY).get();
 
-        VillageStructures.addBuildingToPool(templatePools, processorLists,
-                new ResourceLocation("minecraft:village/plains/houses"),
-                Evident.ID + ":village/houses/plains_chopping_camp_1", 5);
-        VillageStructures.addBuildingToPool(templatePools, processorLists,
-                new ResourceLocation("minecraft:village/plains/houses"),
-                Evident.ID + ":village/houses/plains_chopping_camp_2", 5);
+        if (Configuration.SPAWN_PLAINS_CHOPPING_CAMP.get()){
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/plains/houses"),
+                    Evident.ID + ":village/houses/plains_chopping_camp_1", 5);
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/plains/houses"),
+                    Evident.ID + ":village/houses/plains_chopping_camp_2", 5);
+        }
 
-        VillageStructures.addBuildingToPool(templatePools, processorLists,
-                new ResourceLocation("minecraft:village/savanna/houses"),
-                Evident.ID + ":village/houses/savanna_chopping_camp_1", 5);
-        VillageStructures.addBuildingToPool(templatePools, processorLists,
-                new ResourceLocation("minecraft:village/savanna/houses"),
-                Evident.ID + ":village/houses/savanna_chopping_camp_2", 5);
+        if (Configuration.SPAWN_TAIGA_CHOPPING_CAMP.get()) {
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/taiga/houses"),
+                    Evident.ID + ":village/houses/taiga_chopping_camp_1", 4);
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/taiga/houses"),
+                    Evident.ID + ":village/houses/taiga_chopping_camp_2", 6);
+        }
 
-        VillageStructures.addBuildingToPool(templatePools, processorLists,
-                new ResourceLocation("minecraft:village/snowy/houses"),
-                Evident.ID + ":village/houses/snowy_chopping_camp_1", 5);
-        VillageStructures.addBuildingToPool(templatePools, processorLists,
-                new ResourceLocation("minecraft:village/snowy/houses"),
-                Evident.ID + ":village/houses/snowy_chopping_camp_2", 5);
+        if (Configuration.SPAWN_SAVANNA_CHOPPING_CAMP.get()) {
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/savanna/houses"),
+                    Evident.ID + ":village/houses/savanna_chopping_camp_1", 5);
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/savanna/houses"),
+                    Evident.ID + ":village/houses/savanna_chopping_camp_2", 5);
+        }
+
+        if (Configuration.SPAWN_SNOWY_CHOPPING_CAMP.get()) {
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/snowy/houses"),
+                    Evident.ID + ":village/houses/snowy_chopping_camp_1", 5);
+            VillageStructures.addBuildingToPool(templatePools, processorLists,
+                    new ResourceLocation("minecraft:village/snowy/houses"),
+                    Evident.ID + ":village/houses/snowy_chopping_camp_2", 5);
+        }
     }
 
     public static void addBuildingToPool(Registry<StructureTemplatePool> templatePoolRegistry,

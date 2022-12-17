@@ -2,14 +2,16 @@ package io.github.mortuusars.evident.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+@SuppressWarnings("TextBlockMigration")
 public class Configuration {
     public static final ForgeConfigSpec COMMON;
 
+    // Burnable
     public static final ForgeConfigSpec.BooleanValue BURNABLE_ENABLED;
     public static final ForgeConfigSpec.BooleanValue BURNABLE_CONSUME_ITEM;
     public static final ForgeConfigSpec.BooleanValue BURNABLE_DAMAGE_ITEM;
 
-
+    // Shooting Torches
     public static final ForgeConfigSpec.BooleanValue SHOOTING_TORCHES_ENABLED;
     public static final ForgeConfigSpec.BooleanValue SHOOTING_TORCHES_DISPENSER;
     public static final ForgeConfigSpec.DoubleValue SHOOTING_TORCHES_DAMAGE;
@@ -19,8 +21,17 @@ public class Configuration {
     public static final ForgeConfigSpec.IntValue SHOOTING_TORCHES_SLOWNESS_SECONDS;
     public static final ForgeConfigSpec.BooleanValue SHOOTING_TORCHES_IGNORE_HOTBAR;
 
+    // Chopping Block
     public static final ForgeConfigSpec.DoubleValue CHOPPING_BLOCK_DAMAGE_CHANCE;
 
+    // Structures
+    public static final ForgeConfigSpec.BooleanValue SPAWN_CHOPPING_CAMP_HOUSES;
+    public static final ForgeConfigSpec.BooleanValue SPAWN_PLAINS_CHOPPING_CAMP;
+    public static final ForgeConfigSpec.BooleanValue SPAWN_TAIGA_CHOPPING_CAMP;
+    public static final ForgeConfigSpec.BooleanValue SPAWN_SAVANNA_CHOPPING_CAMP;
+    public static final ForgeConfigSpec.BooleanValue SPAWN_SNOWY_CHOPPING_CAMP;
+
+    // Misc
     public static final ForgeConfigSpec.BooleanValue CHANGE_DEFAULT_COBWEB_SOUND;
 
     static {
@@ -81,11 +92,29 @@ public class Configuration {
 
         builder.pop();
 
+        builder.push("Structures");
+
+        SPAWN_CHOPPING_CAMP_HOUSES = builder
+                .comment("Chopping Camp buildings will spawn in villages.")
+                .define("SpawnChoppingCampBuildings", true);
+
+        builder.push("Individual");
+
+        SPAWN_PLAINS_CHOPPING_CAMP = builder.define("SpawnPlainsChoppingCamp", true);
+        SPAWN_TAIGA_CHOPPING_CAMP = builder.define("SpawnTaigaChoppingCamp", true);
+        SPAWN_SAVANNA_CHOPPING_CAMP = builder.define("SpawnSavannaChoppingCamp", true);
+        SPAWN_SNOWY_CHOPPING_CAMP = builder.define("SpawnSnowyChoppingCamp", true);
+
+        builder.pop();
+        builder.pop();
+
+        builder.push("Miscellaneous");
 
         CHANGE_DEFAULT_COBWEB_SOUND = builder
                 .comment("Change Cobweb sound to something that's not stone ¯\\_(ツ)_/¯")
                 .define("ChangeCobwebSound", true);
 
+        builder.pop();
 
         COMMON = builder.build();
     }
